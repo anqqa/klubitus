@@ -4,8 +4,11 @@ composer.phar
 # composer.lock
 .env.*.php
 .env.php
-CONTRIBUTING.md
+/app/config/dev/*
+/app/config/stating/*
+/app/config/production/*
 
+CONTRIBUTING.md
 _ide_helper.php
 
 .idea
