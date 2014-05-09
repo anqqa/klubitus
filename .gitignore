@@ -5,7 +5,7 @@ composer.phar
 .env.*.php
 .env.php
 /app/config/dev/*
-/app/config/stating/*
+/app/config/staging/*
 /app/config/production/*
 
 CONTRIBUTING.md
