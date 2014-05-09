@@ -6,6 +6,8 @@ composer.phar
 .env.php
 CONTRIBUTING.md
 
+_ide_helper.php
+
 .idea
 .DS_Store
 Thumbs.db
