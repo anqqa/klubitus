@@ -8,6 +8,7 @@ composer.phar
 /app/config/staging/*
 /app/config/production/*
 /node_modules
+/bower_components
 
 CONTRIBUTING.md
 _ide_helper.php
