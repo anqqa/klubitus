@@ -7,7 +7,7 @@
 
 	@yield('meta')
 
-	{{ HTML::style('public/css/anqh.css') }}
+	{{ HTML::style('assets/css/klubitus.css') }}
 	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css') }}
 	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.min.css') }}
 	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2-bootstrap.css') }}
