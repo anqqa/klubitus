@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 					'app/assets/js/vendor/markitup.bbcode.js',
 					'app/assets/js/vendor/jquery.cookie.js'
 				],
-				dest: 'public/assets/js/c/vendor.js'
+				dest: 'public/assets/js/vendor.js'
 			},
 			klubitus: {
 				src: [
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 					'app/assets/js/jquery.autocomplete.venue.js',
 					'app/assets/js/jquery.notes.js'
 				],
-				dest: 'public/assets/js/c/klubitus.js'
+				dest: 'public/assets/js/klubitus.js'
 			}
 		},
 
@@ -59,12 +59,12 @@ module.exports = function(grunt) {
 			},
 			vendor: {
 				files: {
-					'public/assets/js/c/vendor.min.js': 'public/assets/js/c/vendor.js'
+					'public/assets/js/vendor.min.js': 'public/assets/js/vendor.js'
 				}
 			},
 			anqh: {
 				files: {
-					'public/assets/js/c/klubitus.min.js': 'public/assets/js/c/klubitus.js'
+					'public/assets/js/klubitus.min.js': 'public/assets/js/klubitus.js'
 				}
 			}
 		},
