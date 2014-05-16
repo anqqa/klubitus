@@ -9,7 +9,8 @@ composer.phar
 /app/config/production/*
 /node_modules
 /bower_components
-/public/assets/*
+/public/assets/css
+/public/assets/js
 
 CONTRIBUTING.md
 _ide_helper.php
