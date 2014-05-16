@@ -1,12 +1,12 @@
 /**
  * Venue autocomplete.
  *
- * @package    Anqh
+ * @package    klubitus
  * @author     Antti Qvickström
  * @copyright  (c) 2013 Antti Qvickström
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
-(function ($, Anqh) {
+(function ($) {
 
 	$.fn.autocompleteVenue = function(options) {
 		var defaults = {
@@ -97,7 +97,7 @@
 				position:  options.position,
 				source:    function(request, response) {
 					$.ajax({
-						url:      Anqh.APIURL + '/v1/venues/foursquare',
+						url:      '/api/v1/venues/foursquare',
 						dataType: 'jsonp',
 						type:     'get',
 						data:     {
@@ -139,4 +139,4 @@
 			});
 	};
 
-})(jQuery, Anqh);
+})(jQuery);

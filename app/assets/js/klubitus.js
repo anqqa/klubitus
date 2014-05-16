@@ -1,20 +1,11 @@
 /**
- * Various generic JavaScripts for Anqh.
+ * Various generic JavaScripts for klubitus.
  *
- * @package    Anqh
+ * @package    klubitus
  * @author     Antti Qvickström
  * @copyright  (c) 2010-2014 Antti Qvickström
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
-
-Anqh = Anqh || {};
-
-// Google Maps Geocoder
-Anqh.geocoder = null;
-
-// Google Maps Map
-Anqh.map = null;
-
 
 // Ajax loader
 $.fn.loading = function(loaded) {

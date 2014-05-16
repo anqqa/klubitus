@@ -1,12 +1,12 @@
 /**
  * Event autocomplete.
  *
- * @package    Anqh
+ * @package    klubitus
  * @author     Antti Qvickström
  * @copyright  (c) 2013-2014 Antti Qvickström
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
-(function ($, Anqh) {
+(function ($) {
 
 	$.fn.autocompleteEvent = function(options) {
 		var $field = $(this);
@@ -58,7 +58,7 @@
 					name:     'events',
 					valueKey: 'name',
 					remote: {
-						url:        Anqh.APIURL + '/v1/events/search',
+						url:        '/api/v1/events/search',
 						dataType:   'jsonp',
 						beforeSend: function() {
 							$field.closest('.form-group').toggleClass('loading', true);
@@ -99,7 +99,7 @@
 					}
 
 					lastXhr = $.ajax({
-						url: Anqh.APIURL + '/v1/events/search',
+						url: '/api/v1/events/search',
 						dataType: 'jsonp',
 						success: function(data, status, xhr) {
 							cache[request.term] = $.map(data.events, function(item) {
@@ -152,4 +152,4 @@
 			};
 	};
 
-})(jQuery, Anqh);
+})(jQuery);

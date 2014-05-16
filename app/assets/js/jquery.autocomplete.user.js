@@ -1,12 +1,12 @@
 /**
  * User autocomplete.
  *
- * @package    Anqh
+ * @package    klubitus
  * @author     Antti Qvickström
  * @copyright  (c) 2013-2014 Antti Qvickström
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
-(function ($, Anqh, undefined) {
+(function ($, undefined) {
 
 	$.fn.autocompleteUser = function(options) {
 		var $field = $(this);
@@ -42,7 +42,7 @@
 						containerCss: { width: '100%' },
 						tags: multiple || undefined,
 						ajax: {
-							url: Anqh.APIURL + '/v1/users/search',
+							url: '/api/v1/users/search',
 							dataType: 'jsonp',
 							data: function (term, page) {
 								return {
@@ -169,7 +169,7 @@
 							name:     'users',
 							valueKey: 'username',
 							remote: {
-								url:        Anqh.APIURL + '/v1/users/search',
+								url:        '/api/v1/users/search',
 								dataType:   'jsonp',
 								beforeSend: function() {
 									$field.closest('.form-group').toggleClass('loading', true);
@@ -207,7 +207,7 @@
 								console.log('highlighter', item);
 							}*/
 							/*					remote: {
-							 url:     Anqh.APIURL + '/v1/users/search',
+							 url:     '/api/v1/users/search',
 							 replace: function(url, uriEncodedQuery) {
 							 console.log(url, uriEncodedQuery);
 							 return url += '?query=' + uriEncodedQuery;
@@ -243,7 +243,7 @@
 					}
 
 					lastXhr = $.ajax({
-						url: Anqh.APIURL + '/v1/users/search',
+						url: '/api/v1/users/search',
 						dataType: 'jsonp',
 						data: {
 							'q':     term,
@@ -298,4 +298,4 @@
 */
 	};
 
-})(jQuery, Anqh);
+})(jQuery);
