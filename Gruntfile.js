@@ -23,7 +23,6 @@ module.exports = function(grunt) {
 			klubitus: {
 				src: [
 					'app/assets/js/klubitus.js',
-					'app/assets/js/jquery.form.js',
 					'app/assets/js/jquery.googlemap.js',
 					'app/assets/js/jquery.dialogify.js',
 					'app/assets/js/jquery.ajaxify.js',
