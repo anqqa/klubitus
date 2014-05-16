@@ -29,48 +29,7 @@
 
 @include('layouts._title')
 
-@if (isset($top))
-<div class="content {{{ $topClass or '' }}}">
-	<div class="container">
-		<div class="row">
-
-@section('top')
-@show
-
-		</div>
-	</div>
-</div>
-@endif
-
-<div class="content {{{ $centerClass or '' }}}">
-	<div class="container">
-		<div class="row">
-
-@section('left')
-@show
-
-@section('center')
-@show
-
-@section('right')
-@show
-
-		</div>
-	</div>
-</div>
-
-@if (isset($bottom))
-<div class="content {{{ $bottomClass or '' }}}">
-	<div class="container">
-		<div class="row">
-
-@section('bottom')
-@show
-
-		</div>
-	</div>
-</div>
-@endif
+{{ $content }}
 
 <!-- /CONTENT -->
 
