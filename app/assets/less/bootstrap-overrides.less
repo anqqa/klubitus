@@ -1,0 +1,130 @@
+
+//
+// Normalize
+// --------------------------------------------------
+html                                   { height: 100%; }
+article                                { position: relative; }
+p:last-child,
+dl,
+ul                                     { margin-bottom: 0; }
+
+
+//
+// Typography
+// --------------------------------------------------
+h1                                     { font-size: 24px; font-weight: normal; letter-spacing: 1px; margin-top: 0; }
+h2                                     { font-size: 20px; }
+h3                                     { font-size: @font-size-base; letter-spacing: .1em; text-transform: uppercase; /*font-size: 18px;*/ line-height: 20px; }
+h4                                     { font-family: inherit; font-size: 14px; font-weight: bold; }
+h5,
+h6                                     { font-family: inherit; font-size: 12px; }
+h1 small                               { font-size: 18px; }
+h2 small                               { font-size: 14px; }
+h3 small,
+h4 small                               { font-size: 12px; line-height: @line-height-base; }
+
+
+//
+// Tables
+// --------------------------------------------------
+.table                                 {
+  &:last-child                         { margin-bottom: 0; }
+  .table                               { background: none; }
+}
+
+
+//
+// Forms
+// --------------------------------------------------
+form                                   {
+  &:last-child                         { margin-bottom: 0; }
+  &:only-child                         { margin-top: 0; }
+}
+.inline-block .control-label           { display: block; }
+fieldset + fieldset > legend           { padding-top: 10px; }
+legend .control-group                  { float: right; }
+select.form-control                    { padding: @padding-base-vertical (@padding-base-horizontal / 2); }
+.form-horizontal .radios .control-label { float: left; margin-right: 5px; }
+
+
+//
+// Buttons
+// --------------------------------------------------
+.btn-lovely                            { .button-variant(@btn-lovely-color; @btn-lovely-bg; @btn-lovely-border); }
+.btn-special                           { .button-variant(@btn-special-color; @btn-special-bg; @btn-special-border); }
+.btn-facebook                          { .button-variant(@btn-primary-color; #4C66A4; darken(#4C66A4, 5%))}
+
+
+//
+// Labels
+// --------------------------------------------------
+.label-special                         { background-color: @brand-special; }
+.label-special:hover                   { background-color: darken(@brand-special, 10%); }
+
+
+//
+// Thumbanils
+// --------------------------------------------------
+.thumbnails > li                       { margin-bottom: 10px; margin-left: 10px; }
+
+
+//
+// Media
+// --------------------------------------------------
+.media,
+.media .media                          { margin-top: 10px; }
+
+
+//
+// Panels
+// --------------------------------------------------
+.panel                                 {
+  .panel-title                         { font-size: @font-size-base; text-align: center; }
+}
+
+
+//
+// Popover
+// --------------------------------------------------
+.popover                               {
+  .popover-title                       { padding-right: 40px; }
+  figure                               { text-align: center; }
+  .stats                               { position: absolute; right: 10px; top: 10px; }
+}
+
+
+//
+// Carousel
+// --------------------------------------------------
+.carousel                              {
+  img                                  { width: 100%; }
+  .carousel-control                    { background: rgba(0, 0, 0, 0.25);
+    &:hover                            { background: rgba(0, 0, 0, 0.5); }
+    .icon-next                         { margin-left: auto; margin-right: -15px; }
+  }
+  .actions                             { display: none; left: @carousel-control-width; position: absolute; right: @carousel-control-width; text-align: center; top: 20px; }
+  &:hover .actions                     { display: block; }
+}
+
+
+/*
+i[class^="icon-"],
+i[class*=" icon-"]                     { font-size: 14px; display: inline-block !important; text-align: center; text-decoration: none !important; width: 14px; }
+h1 i[class^="icon-"],
+h1 i[class*=" icon-"]                  { font-size: 21px; width: 21px; }
+.icon-facebook                         { background: #3B5998; border-radius: 2px; padding: 2px 0 0 2px; }
+
+.pager                                 { margin: 5px 0;
+  li > a,
+  li > span                            { background-color: @pagination-bg; border-color: @pagination-border; }
+  li > a:hover                         { background-color: @pagination-active-bg; }
+  .disabled > a,
+  .disabled > a:hover,
+  .disabled > span                     { background-color: @gray-darker; }
+}
+.pagination                            { margin-top: 0; }
+
+.nav-tabs > li > a                     { border-width: 0 0 4px 0; padding-bottom: 5px; }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover        { border-width: 0 0 4px 0; }
+*/

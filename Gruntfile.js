@@ -22,23 +22,23 @@ module.exports = function(grunt) {
 			},
 			klubitus: {
 				src: [
-					'app/assets/js/klubitus/klubitus.js',
-					'app/assets/js/klubitus/jquery.form.js',
-					'app/assets/js/klubitus/jquery.googlemap.js',
-					'app/assets/js/klubitus/jquery.dialogify.js',
-					'app/assets/js/klubitus/jquery.ajaxify.js',
-					'app/assets/js/klubitus/jquery.autocomplete.event.js',
-					'app/assets/js/klubitus/jquery.autocomplete.geo.js',
-					'app/assets/js/klubitus/jquery.autocomplete.user.js',
-					'app/assets/js/klubitus/jquery.autocomplete.venue.js',
-					'app/assets/js/klubitus/jquery.notes.js'
+					'app/assets/js/klubitus.js',
+					'app/assets/js/jquery.form.js',
+					'app/assets/js/jquery.googlemap.js',
+					'app/assets/js/jquery.dialogify.js',
+					'app/assets/js/jquery.ajaxify.js',
+					'app/assets/js/jquery.autocomplete.event.js',
+					'app/assets/js/jquery.autocomplete.geo.js',
+					'app/assets/js/jquery.autocomplete.user.js',
+					'app/assets/js/jquery.autocomplete.venue.js',
+					'app/assets/js/jquery.notes.js'
 				],
 				dest: 'public/assets/js/c/klubitus.js'
 			}
 		},
 
 		jshint: {
-			anqh: [ 'app/assets/js/klubitus/*.js' ]
+			anqh: [ 'app/assets/js/*.js' ]
 		},
 
 		less: {
