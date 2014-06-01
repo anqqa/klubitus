@@ -50,6 +50,10 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code) {
 	Log::error($exception);
+
+	if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+//		return Response::make('Not found', 404);
+	}
 });
 
 /*
@@ -90,3 +94,36 @@ require app_path() . '/filters.php';
 */
 
 require app_path() . '/macros.php';
+
+/*
+|--------------------------------------------------------------------------
+| Debug bar
+|--------------------------------------------------------------------------
+|
+| Custom debug bar collectors.
+|
+*/
+
+if (Debugbar::isEnabled()) {
+	$collector = new Debugbar\DataCollector\MessagesCollector('Cache');
+
+	Event::listen('cache.*', function($param) use ($collector) {
+		switch (Event::firing()) {
+			case 'cache.forget':   $collector->addMessage($param, 'forget'); break;
+			case 'cache.get.hit':  $collector->addMessage($param, 'hit'); break;
+			case 'cache.get.miss': $collector->addMessage($param, 'miss'); break;
+			case 'cache.put':      $collector->addMessage($param, 'put'); break;
+		}
+	});
+
+	Debugbar::addCollector($collector);
+
+	Cache::extend('eventedmemcached', function($app) {
+		$servers   = $app['config']['cache.memcached'];
+		$memcached = $app['memcached.connector']->connect($servers);
+
+		return new \Illuminate\Cache\Repository(new EventedmemcachedStore($memcached, Cache::getPrefix()));
+	});
+	Cache::setDefaultDriver('eventedmemcached');
+
+}
