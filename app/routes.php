@@ -12,3 +12,16 @@
 */
 
 Route::get('/', 'HomeController@getIndex');
+
+// Profile routes
+Route::bind('user', function($username) {
+	if ($user = User::username($username)->first()) {
+		return $user;
+	}
+
+	App::abort(404);
+});
+Route::get('member/{user}', array(
+	'as'   => 'profile',
+	'uses' => 'UserController@getProfile'
+));
