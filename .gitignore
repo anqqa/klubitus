@@ -11,6 +11,7 @@ composer.phar
 /bower_components
 /public/assets/css
 /public/assets/js
+/public/packages
 
 CONTRIBUTING.md
 _ide_helper.php
