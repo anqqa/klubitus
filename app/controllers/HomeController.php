@@ -9,7 +9,7 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex() {
 		$this->layout->content = View::make('layouts._three_columns', array(
-			'left' => $this->_viewShouts()
+			'left' => $this->_viewShouts(10)
 		));
 	}
 
@@ -23,9 +23,17 @@ class HomeController extends BaseController {
 	}
 
 
-	protected function _viewShouts() {
-		return View::make('home._shouts', array(
-			'title' => 'Shoutbox'
+	/**
+	 * Shouts view.
+	 *
+	 * @param   integer  $limit
+	 * @return  \Illuminate\View\View
+	 */
+	protected function _viewShouts($limit = 10) {
+		return View::make('home.shouts', array(
+			'title'    => 'Shouts',
+			'shouts'   => Shout::latest()->take($limit)->get(),
+			'canShout' => true,
 		));
 	}
 
