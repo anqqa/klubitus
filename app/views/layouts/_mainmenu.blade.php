@@ -44,7 +44,7 @@
 		</li>
 
 		<li id="signin" class="dropdown">
-			<a href="{{ URL::route('login') }}" class="dropdown-toggle" data-toggle="dropdown">
+			<a href="{{ URL::route('session.create') }}" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-sign-in"></i> Login
 			</a>
 			<div class="dropdown-menu dropdown-menu-right">
@@ -53,7 +53,7 @@
 		</li>
 
 		@else
-		<a href="{{ URL::route('logout') }}">Logout</a>
+		<a href="{{ URL::route('session.destroy') }}">Logout</a>
 		@endif
 
 		theme

@@ -13,6 +13,11 @@
 
 Route::get('/', 'HomeController@getIndex');
 
+// Session routes
+Route::get('login',  array('as' => 'session.create',  'uses' => 'SessionController@create'));
+Route::post('login', array('as' => 'session.store',   'uses' => 'SessionController@store'));
+Route::get('logout', array('as' => 'session.destroy', 'uses' => 'SessionController@destroy'));
+
 // User routes
 Route::bind('user', function($username) {
 	return User::username($username)->firstOrFail();
@@ -21,8 +26,6 @@ Route::get('member/{user}', array(
 	'as'   => 'profile',
 	'uses' => 'UserController@getProfile'
 ));
-Route::get('signin',  array('as' => 'login',    'uses' => 'UserController@getLogin'));
-Route::get('signout', array('as' => 'logout',   'uses' => 'UserController@getLogout'));
 Route::get('signup',  array('as' => 'register', 'uses' => 'UserController@getRegister'));
 
 // OAuth

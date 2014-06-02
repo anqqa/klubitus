@@ -4,7 +4,7 @@
 
 <hr>
 
-{{ Form::open([ 'route' => 'register' ]) }}
+{{ Form::open([ 'route' => 'session.store' ]) }}
 
 {{ Form::field([
 	'form'      => $form,
@@ -28,11 +28,10 @@
 	'label' => 'Stay logged in'
 ]) }}
 
-{{ Form::button('Login', [ 'class' => 'btn btn-block btn-primary', 'title' => 'Remember to sign out if on a public computer!' ]) }}
+{{ Form::button('Login', [ 'type' => 'submit', 'class' => 'btn btn-block btn-primary', 'title' => 'Remember to sign out if on a public computer!' ]) }}
 
 {{ Form::close() }}
 
 <sub>
-	<a href="#" class="text-muted">Forgot username or password?</a>
+	<a href="{{ URL::route('session.create') }}" class="text-muted">Forgot username or password?</a>
 </sub>
-

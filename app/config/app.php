@@ -103,7 +103,7 @@ return array(
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
-		'Illuminate\Hashing\HashServiceProvider',
+//		'Illuminate\Hashing\HashServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
@@ -123,6 +123,7 @@ return array(
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 
+		'KohanaHashServiceProvider',
 	),
 
 	/*
