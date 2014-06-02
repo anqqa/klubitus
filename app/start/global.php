@@ -19,6 +19,7 @@ ClassLoader::addDirectories(array(
 	app_path() . '/database/seeds',
 	app_path() . '/exceptions',
 	app_path() . '/libraries',
+	app_path() . '/forms',
 
 ));
 
