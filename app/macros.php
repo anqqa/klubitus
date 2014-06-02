@@ -11,6 +11,9 @@ Form::macro('field', function($options) {
 		return '';
 	}
 
+	/** @var  BaseForm  $form */
+	$form = array_pull($options, 'form');
+
 	// Type
 	$type = array_pull($options, 'type', 'text');
 
@@ -18,13 +21,18 @@ Form::macro('field', function($options) {
 	$label = array_pull($options, 'label');
 
 	// Value
-	$value = Input::old($name, array_pull($options, 'value'));
+	$value = null;
+	if ($form) {
+		$value = array_get($form->getInputData(), $name);
+	}
+	if ($value === null) {
+		$value = Input::old($name, array_pull($options, 'value'));
+	}
 
 	// Class
 	$class = array_pull($options, 'class');
 
 	// Error
-	$form  = array_pull($options, 'form');
 	$error = $form ? $form->getError($name) : null;;
 
 	// Add other parameters to input
