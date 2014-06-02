@@ -35,7 +35,7 @@
 
 @include('layouts._title')
 
-{{ $content }}
+{{ $content or '' }}
 
 <!-- /CONTENT -->
 
