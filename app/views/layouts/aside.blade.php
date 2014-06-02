@@ -3,7 +3,7 @@
 
 	@section('header')
 		@if (isset($title))
-		<h3>{{ $title }}</h3>
+		<h3 class="panel-title">{{ $title }}</h3>
 		@endif
 		@if (isset($subtitle))
 		<p>{{ $subtitle }}</p>
