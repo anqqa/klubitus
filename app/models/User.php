@@ -40,7 +40,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		} else if (is_string($id)) {
 
 			// Got user name, find id
-			$id = self::user_id($id);
+			$id = self::getId($id);
 
 		} else {
 
@@ -79,7 +79,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 	/**
-	 * Get user id from data
+	 * Get user id from data.
 	 *
 	 * @static
 	 * @param   mixed  $user
@@ -94,7 +94,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		} else if (is_array($user)) {
 
 			// Got user array
-			return (int)Arr::get($user, 'id');
+			return (int)array_get($user, 'id');
 
 		}	else if ($user instanceof User) {
 
@@ -106,7 +106,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			// Got user name
 			$username = Text::slug($user);
 			if (!$id = (int)Cache::get('userName:' . $username)) {
-				if ($user = User::find_user($user)) {
+				if ($user = User::where('username_clean', '=', $username)->first()) {
 					$id = $user->id;
 					Cache::put('userName:' . $username, $id, 60 * 24);
 				}
