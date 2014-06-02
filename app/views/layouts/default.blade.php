@@ -27,6 +27,12 @@
 
 <!-- CONTENT -->
 
+@if (Session::has('message'))
+<div id="messages" class="container">
+	<p class="alert">{{ Session::get('message') }}</p>
+</div>
+@endif
+
 @include('layouts._title')
 
 {{ $content }}

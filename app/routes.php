@@ -13,15 +13,17 @@
 
 Route::get('/', 'HomeController@getIndex');
 
-// Profile routes
+// User routes
 Route::bind('user', function($username) {
-	if ($user = User::username($username)->first()) {
-		return $user;
-	}
-
-	App::abort(404);
+	return User::username($username)->firstOrFail();
 });
 Route::get('member/{user}', array(
 	'as'   => 'profile',
 	'uses' => 'UserController@getProfile'
 ));
+Route::get('signin',  array('as' => 'login',    'uses' => 'UserController@getLogin'));
+Route::get('signout', array('as' => 'logout',   'uses' => 'UserController@getLogout'));
+Route::get('signup',  array('as' => 'register', 'uses' => 'UserController@getRegister'));
+
+// OAuth
+Route::get('oauth/facebook/login', array('as' => 'facebook-login', 'uses' => 'OAuthController@getFacebookLogin'));

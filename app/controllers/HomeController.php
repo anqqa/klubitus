@@ -33,7 +33,7 @@ class HomeController extends BaseController {
 		return View::make('home.shouts', array(
 			'title'    => 'Shouts',
 			'shouts'   => Shout::latest()->take($limit)->get(),
-			'canShout' => true,
+			'canShout' => false,
 		));
 	}
 
