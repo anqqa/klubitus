@@ -45,7 +45,9 @@ Form::macro('field', function($options) {
 	switch ($type) {
 
 		case 'text':
-			$markup .= Form::label($name, $label, array('class' => 'control-label'));
+			if ($label) {
+				$markup .= Form::label($name, $label, array('class' => 'control-label'));
+			}
 			$markup .= Form::input('text', $name, $value, $parameters);
 			break;
 
