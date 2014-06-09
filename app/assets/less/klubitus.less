@@ -51,7 +51,7 @@ div.loading                            { .ajax; position: absolute; right: 5px; 
 .user:hover                            { color: @link-hover-color; }
 a.friend                               { text-decoration: underline; }
 .avatar                                { display: inline-block; .square(50px); text-align: center;
-  &.small                              { .square(25px); }
+//  &.small                              { .square(25px); }
   img                                  { max-height: 100%; max-width: 100%; }
 }
 .avatar + .user                        { margin-left: 5px; }
@@ -109,6 +109,7 @@ input.private                          { border-color: @brand-special; color: @b
     label[for=field-password] a        { float: right; }
   }
   #notifications .popover-content      { min-width: 250px; }
+  .avatar                              { .square(25px); }
 }
 
 

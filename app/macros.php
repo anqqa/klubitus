@@ -84,7 +84,7 @@ Form::macro('field', function($options) {
 /**
  * User avatar with link to profile.
  */
-HTML::macro('avatar', function($user = null, $username = null) {
+HTML::macro('avatar', function($avatar = true, $username = null, $class = null, $lazy = true) {
 	static $viewer;
 
 	// Load current user
@@ -92,7 +92,61 @@ HTML::macro('avatar', function($user = null, $username = null) {
 		$viewer = Auth::user();
 	}
 
-	return 'avatar';
+	$placeholder = URL::asset('assets/img/avatar/unknown.png');
+	$lazy        = $lazy && !Request::ajax();
+	$class       = 'avatar ' . $class;
+
+	// Gather missing data
+	if ($avatar === true && $viewer) {
+
+		// Use viewer by default
+		$avatar   = $viewer->avatar;
+		$username = $viewer->username;
+
+	} else if (is_array($avatar)) {
+
+		// Light user array
+		$username = array_get($avatar, 'username', $username);
+		$avatar   = array_get($avatar, 'avatar');
+
+	} else if ($avatar instanceof User) {
+
+		// User model
+		$username = $avatar->username;
+		$avatar   = $avatar->avatar;
+
+	}
+
+	// Missing
+	if (!$avatar || strpos($avatar, '/') === false) {
+		$avatar = $placeholder;
+	}
+
+	// Absolute
+	if (strpos($avatar, '//') === false) {
+		$avatar = URL::to($avatar);
+	}
+
+	if (!$username) {
+
+		// Anonymous
+		return '<span class="' . $class . '">' . ($lazy
+			? HTML::image($placeholder, 'Avatar', [ 'class' => 'img-circle lazy', 'data-original' => $avatar ])
+			: HTML::image($avatar, 'Avatar', [ 'class' => 'img-circle' ])
+		) . '</span>';
+
+	} else {
+
+		// User
+		$class = trim($class) . ' hoverable';
+		$title = HTML::entities($username);
+
+		return '<a href="' . URL::route('user.profile', [ 'user' => Text::slug($username) ]) . '" class="' . $class . '">' . ($lazy
+			? HTML::image($placeholder, $title, [ 'title' => $title, 'class' => 'img-circle lazy', 'data-original' => $avatar ])
+			: HTML::image($avatar, $title, [ 'title' => $title, 'class' => 'img-circle' ])
+		) . '</a>';
+
+	}
 });
 
 
