@@ -34,7 +34,9 @@
 	</ul>
 
 	<ul class="nav navbar-nav navbar-right collapse navbar-collapse" role="menubar">
-		search
+		<li>
+			search
+		</li>
 
 		@if (!$viewer)
 
@@ -78,7 +80,9 @@
 
 		@endif
 
-		theme
+		<li>
+			theme
+		</li>
 	</ul>
 
 </nav><!-- #mainmenu -->
