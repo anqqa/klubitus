@@ -9,32 +9,17 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex() {
 		$this->layout->content = View::make('layouts._three_columns', array(
-			'left' => $this->_viewShouts(10)
+			'left' => App::make('ShoutController')->viewShouts(10)
 		));
 	}
 
 
-	protected function _viewBirthdays() {
+	protected function viewBirthdays() {
 
 	}
 
-	protected function _viewNewsfeed() {
+	protected function viewNewsfeed() {
 
-	}
-
-
-	/**
-	 * Shouts view.
-	 *
-	 * @param   integer  $limit
-	 * @return  \Illuminate\View\View
-	 */
-	protected function _viewShouts($limit = 10) {
-		return View::make('home.shouts', array(
-			'title'    => 'Shouts',
-			'shouts'   => Shout::latest()->take($limit)->get(),
-			'canShout' => false,
-		));
 	}
 
 }

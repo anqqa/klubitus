@@ -11,7 +11,18 @@
 		@endforeach
 	</ul>
 
-	@if ($canShout)
-form
+	@if (Auth::check())
+{{ Form::open([ 'url' => 'shouts/shout', 'class' => 'ajaxify' ]) }}
+
+{{ Form::field([
+	'name'        => 'shout',
+	'placeholder' => 'Shout, and ye shall be heard..'
+]) }}
+
+		@if (isset($limit))
+{{ Form::hidden('limit', $limit) }}
+		@endif
+
+{{ Form::close() }}
 	@endif
 @stop
