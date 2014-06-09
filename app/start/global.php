@@ -23,6 +23,7 @@ ClassLoader::addDirectories(array(
 
 ));
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger
@@ -34,7 +35,8 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles(storage_path().'/logs/laravel.log');
+Log::useFiles(storage_path() . '/logs/laravel.log');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +59,7 @@ App::error(function(Exception $exception, $code) {
 	}
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
@@ -72,6 +75,7 @@ App::down(function() {
 	return Response::make("Be right back!", 503);
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
@@ -85,6 +89,7 @@ App::down(function() {
 
 require app_path() . '/filters.php';
 
+
 /*
 |--------------------------------------------------------------------------
 | Require The Macros File
@@ -95,6 +100,7 @@ require app_path() . '/filters.php';
 */
 
 require app_path() . '/macros.php';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -128,3 +134,15 @@ if (Debugbar::isEnabled()) {
 	Cache::setDefaultDriver('eventedmemcached');
 
 }
+
+
+/*
+|--------------------------------------------------------------------------
+| View globals
+|--------------------------------------------------------------------------
+|
+| Global variables available to all views
+|
+*/
+
+View::share('viewer', Auth::user());

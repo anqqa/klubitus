@@ -82,6 +82,21 @@ Form::macro('field', function($options) {
 
 
 /**
+ * User avatar with link to profile.
+ */
+HTML::macro('avatar', function($user = null, $username = null) {
+	static $viewer;
+
+	// Load current user
+	if ($viewer === null) {
+		$viewer = Auth::user();
+	}
+
+	return 'avatar';
+});
+
+
+/**
  * Username with link to profile.
  */
 HTML::macro('user', function($user = null, $username = null, $url = null) {
@@ -89,7 +104,7 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 
 	// Load current user
 	if ($viewer === null) {
-
+		$viewer = Auth::user();
 	}
 
 	$classes = array('user');
@@ -127,7 +142,7 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 		}
 
 		if (!$url) {
-			$url = URL::route('profile', array('user' => Text::slug($username)));
+			$url = URL::route('user.profile', array('user' => Text::slug($username)));
 		}
 
 		return '<a href="' . $url . '" class="' . implode(' ', $classes) . '">' . e($username) . '</a>';
@@ -144,3 +159,4 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 
 	}
 });
+

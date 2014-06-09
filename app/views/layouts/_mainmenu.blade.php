@@ -36,7 +36,8 @@
 	<ul class="nav navbar-nav navbar-right collapse navbar-collapse" role="menubar">
 		search
 
-		@if (!Auth::check())
+		@if (!$viewer)
+
 		<li>
 			<a href="{{ URL::route('register') }}" title="Did we mention it's FREE!">
 				<i class="fa fa-heart"></i> Sign up
@@ -53,7 +54,28 @@
 		</li>
 
 		@else
-		<a href="{{ URL::route('session.destroy') }}">Logout</a>
+
+		<li id="notifications"></li>
+
+		<li class="hidden-xs">
+			{{ HTML::avatar() }}
+		</li>
+
+		<li id="visitor" class="dropdown">
+			<a class="user dropdown-toggle" href="#menu-profile" data-toggle="dropdown">{{{ $viewer->username }}}<span class="caret"></span></i></a>
+			<ul class="dropdown-menu pull-right" role="menu">
+				<li role="menuitem">
+					<a href="{{ URL::route('user.profile', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-user"></i> Profile</a>
+					<a href="{{ URL::route('forum.messages') }}"><i class="fa fa-fw fa-envelope"></i> Private messages</a>
+					<a href="{{ URL::route('user.favorites', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-heart"></i> Favorites</a>
+					<a href="{{ URL::route('user.friends', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-group"></i> Friends</a>
+					<a href="{{ URL::route('user.ignores', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-ban"></i> Ignores</a>
+					<a href="{{ URL::route('user.settings', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-cog"></i> Settings</a>
+					<a href="{{ URL::route('session.destroy') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+				</li>
+			</ul>
+		</li>
+
 		@endif
 
 		theme
