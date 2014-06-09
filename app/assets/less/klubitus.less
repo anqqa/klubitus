@@ -8,6 +8,7 @@
 // --------------------------------------------------
 .ajax                                  { background-image: url("@{icon-ajax-path}"); background-position: right top; background-repeat: no-repeat; }
 
+
 //
 // jQuery
 // --------------------------------------------------
@@ -42,6 +43,7 @@
 //
 // Misc items
 // --------------------------------------------------
+div.loading                            { .ajax; position: absolute; right: 5px; .square(16px); top: 5px; }
 .nowrap                                { white-space: nowrap; }
 .user                                  { color: @gray-darkest; font-weight: bold; }
 .male                                  { color: @brand-info; }
@@ -61,7 +63,7 @@ input.private                          { border-color: @brand-special; color: @b
 //  img                                  { display: inline; max-width: none; width: auto; }
 }
 
-.kohana                                { display: none; position: relative; z-index: 1; }
+//.kohana                                { display: none; position: relative; z-index: 1; }
 
 
 //
@@ -81,7 +83,8 @@ input.private                          { border-color: @brand-special; color: @b
 // Containers
 // --------------------------------------------------
 .content > .container                  { padding-bottom: @grid-gutter-width / 2; padding-top: @grid-gutter-width / 2;
-  section                              { margin-bottom: @line-height-computed;
+  aside                                { position: relative; }
+  section                              { margin-bottom: @line-height-computed; position: relative;
     & > header                         {
       .nav                             { margin-bottom: 0; position: absolute; right: 0; top: 10px; }
     }
@@ -135,6 +138,7 @@ input.private                          { border-color: @brand-special; color: @b
 //
 // Modules
 // --------------------------------------------------
+@import "home.less";
 @import "events.less";
 @import "forum.less";
 @import "galleries.less";
@@ -393,8 +397,6 @@ select.time                            { width: 75px; }
 //p.cut,
 .cut li                                { .text-overflow; }
 
-
-div.loading                            { .ajax; position: absolute; right: 5px; .square(16px); top: 5px; }
 
 .months li.selected li.selected        { font-weight: bold; }
 

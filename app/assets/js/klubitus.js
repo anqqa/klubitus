@@ -241,7 +241,7 @@ $(function() {
 
 	$(document).on('submit', 'form.ajaxify', function() {
 		var $form = $(this);
-		$(this).closest('section, aside').ajaxify($form.attr('action'), $form.serialize(), $form.attr('method'));
+		$(this).closest('section, aside').ajaxify($form.attr('action'), $form.serializeArray(), $form.attr('method'));
 
 		return false;
 	});
@@ -314,7 +314,7 @@ $(function() {
 
 
 	// Carousels
-	$('.carousel').carousel({ interval: false });
+//	$('.carousel').carousel({ interval: false });
 
 
 	// Lady load images

@@ -8,35 +8,43 @@
  */
 (function ($) {
 
+	/**
+	 * Send query via ajax and replace container with response.
+	 *
+	 * @param    {String}         url
+	 * @param    {Object|String}  data
+	 * @param    {String}         type  POST|GET
+	 * @param    {Function}       success
+	 * @returns  {$.fn}
+	 */
 	$.fn.ajaxify = function(url, data, type, success) {
 		var $target = $(this);
 
-		type = (type == 'post' || type == 'POST') ? 'POST' : 'GET';
 		$.ajax({
-			type:    type,
-			url:     url,
-			data:    data,
-			timeout: 2500,
-			success: function(data) {
-				$target.slideUp('fast', function _replace() {
-					$target.replaceWith(data).slideDown('fast');
-				});
-
-				if (typeof success == 'function') {
-					success(data);
-				}
-			},
-			error: function(req, err) {
-				if (err === 'error') {
-					err = req.statusText;
-				}
-				alert('Fail: ' + err);
-				$target.loading(true);
-			},
-			beforeSend: function() {
+			type:       (type || '').toUpperCase() === 'POST' ? 'POST' : 'GET',
+			url:        url,
+			data:       data,
+			timeout:    2500,
+			beforeSend: function () {
 				$target.loading();
 			}
-		});
+		})
+				.done(function(data) {
+					$target.replaceWith(data);
+
+					if (typeof success == 'function') {
+						success(data);
+					}
+				})
+
+				.fail(function(xhr, status) {
+					if (status === 'error') {
+						status = xhr.statusText;
+					}
+					alert('Fail: ' + status);
+
+					$target.loading(true);
+				});
 
 		return this;
 	};
