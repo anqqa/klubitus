@@ -11,7 +11,7 @@
 		@endforeach
 	</ul>
 
-	@if (Auth::check())
+	@if ($viewer)
 {{ Form::open([ 'url' => 'shouts/shout', 'class' => 'ajaxify' ]) }}
 
 {{ Form::field([
