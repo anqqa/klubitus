@@ -11,7 +11,9 @@
 		{ 'imgareaselect': '//cdnjs.cloudflare.com/ajax/libs/imgareaselect/0.9.10/js/jquery.imgareaselect.min.js' },
 		{ 'lazyload':      '//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js' },
 		{ 'vendor':        '/assets/js/vendor.min.js' },
-		{ 'klubitus':      '/assets/js/klubitus.min.js' },
+		{ 'klubitus':      '{{ App::environment('dev')
+				? '/assets/js/klubitus.js'
+				: '/assets/js/klubitus.min.js' }}' },
 		function _loaded() {
 
 			// Search
