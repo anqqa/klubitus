@@ -1,28 +1,35 @@
-@extends('layouts.aside')
+<aside id="shouts" class="panel panel-default">
+	<header class="panel-heading">
 
-@section('content')
-	<ul class="list-unstyled">
-		@foreach ($shouts->reverse() as $shout)
-		<li>
-			<span class="text-muted" title="{{ date('j.n.Y', $shout->created) }}">{{ date('H:i', $shout->created) }}</span>
-			{{ HTML::user($shout->author_id) }}
-			{{{ $shout->shout }}}
-		</li>
-		@endforeach
-	</ul>
+		<h3 class="panel-title">Shouts</h3>
 
-	@if ($viewer)
-{{ Form::open([ 'url' => 'shouts/shout', 'class' => 'ajaxify' ]) }}
+	</header>
+	<div class="panel-body">
 
-{{ Form::field([
-	'name'        => 'shout',
-	'placeholder' => 'Shout, and ye shall be heard..'
-]) }}
+		<ul class="list-unstyled">
+			@foreach ($shouts->reverse() as $shout)
+			<li>
+				<span class="text-muted" title="{{ date('j.n.Y', $shout->created) }}">{{ date('H:i', $shout->created) }}</span>
+				{{ HTML::user($shout->author_id) }}
+				{{{ $shout->shout }}}
+			</li>
+			@endforeach
+		</ul>
 
-		@if (isset($limit))
-{{ Form::hidden('limit', $limit) }}
+		@if ($viewer)
+	{{ Form::open([ 'url' => 'shouts/shout', 'class' => 'ajaxify' ]) }}
+
+	{{ Form::field([
+		'name'        => 'shout',
+		'placeholder' => 'Shout, and ye shall be heard..'
+	]) }}
+
+			@if (isset($limit))
+	{{ Form::hidden('limit', $limit) }}
+			@endif
+
+	{{ Form::close() }}
 		@endif
 
-{{ Form::close() }}
-	@endif
-@stop
+	</div>
+</aside>
