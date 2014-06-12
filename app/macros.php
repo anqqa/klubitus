@@ -97,6 +97,9 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 	$class       = 'avatar ' . $class;
 
 	// Gather missing data
+	if (is_numeric($avatar)) {
+		$avatar = User::findLight($avatar);
+	}
 	if ($avatar === true && $viewer) {
 
 		// Use viewer by default
@@ -116,6 +119,7 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 		$avatar   = $avatar->avatar;
 
 	}
+
 
 	// Missing
 	if (!$avatar || strpos($avatar, '/') === false) {
@@ -166,6 +170,11 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 
 		// User
 		$classes[] = 'hoverable';
+		$gender    = '';
+		$userId    = 0;
+		if (is_numeric($user) || is_string($user)) {
+			$user = User::findLight($user);
+		}
 		if (is_array($user)) {
 			$gender   = $user['gender'];
 			$userId   = $user['id'];
@@ -174,19 +183,7 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 			$gender   = $user->gender;
 			$userId   = $user->id;
 			$username = $user->username;
-		} else if (is_numeric($user) || is_string($user)) {
-			if ($user = User::findLight($user)) {
-				$userId   = $user['id'];
-				$gender   = $user['gender'];
-				$username = $user['username'];
-			} else {
-				$userId   = 0;
-				$gender   = '';
-				$username = 'Unknown';
-			}
 		} else {
-			$gender   = '';
-			$userId   = 0;
 			$username = 'Unknown';
 		}
 
