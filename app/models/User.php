@@ -21,6 +21,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @return  array|null
 	 */
 	public static function findLight($id = null) {
+		static $cache;
+
 		if ($id instanceof User) {
 
 			// Got user model, no need to load, just fill caches
@@ -52,9 +54,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			return null;
 		}
 
-		return Cache::remember('userLight:' . $id, 60 * 24, function() use ($id) {
-			return User::find($id)->toLightArray();
-		});
+		if (!isset($cache[$id])) {
+			$cache[$id] = Cache::remember('userLight:' . $id, 60 * 24, function() use ($id) {
+				return User::find($id)->toLightArray();
+			});
+		}
+
+		return $cache[$id];
 	}
 
 
