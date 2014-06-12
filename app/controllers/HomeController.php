@@ -9,7 +9,8 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex() {
 		$this->layout->content = View::make('layouts._three_columns', array(
-			'left' => App::make('ShoutController')->viewShouts(10)
+			'left'   => $this->viewShouts(10),
+			'center' => $this->viewNewsfeed(50),
 		));
 	}
 
@@ -18,8 +19,26 @@ class HomeController extends BaseController {
 
 	}
 
-	protected function viewNewsfeed() {
 
+	/**
+	 * Newsfeed view.
+	 *
+	 * @param   integer  $limit
+	 * @return  \Illuminate\View\View
+	 */
+	protected function viewNewsfeed($limit = 50) {
+		return App::make('NewsfeedController')->viewNewsfeed($limit);
+	}
+
+
+	/**
+	 * Shouts view.
+	 *
+	 * @param   integer  $limit
+	 * @return  \Illuminate\View\View
+	 */
+	protected function viewShouts($limit = 10) {
+		return App::make('ShoutController')->viewShouts($limit);
 	}
 
 }
