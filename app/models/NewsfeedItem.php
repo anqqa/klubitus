@@ -4,6 +4,47 @@ class NewsfeedItem extends Entity {
 
 	public $aggregated = false;
 
+	/** @var  array */
+	protected static $config;
+
+
+	/**
+	 * Create new Entity.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = array()) {
+		parent::__construct($attributes);
+
+		if (!static::$config) {
+			static::config();
+		}
+	}
+
+
+	/**
+	 * Get config.
+	 *
+	 * @return  array
+	 */
+	public static function config() {
+		if (!static::$config) {
+			static::$config = Config::get('newsfeed.items');
+		}
+
+		return static::$config;
+	}
+
+
+	/**
+	 * Get data.
+	 * @param   string  $value
+	 * @return  array
+	 */
+	public function getDataAttribute($value) {
+		return $value ? json_decode($value) : null;
+	}
+
 
 	/**
 	 * Get text.
@@ -11,165 +52,69 @@ class NewsfeedItem extends Entity {
 	 * @return  string
 	 */
 	public function getTextAttribute() {
-		switch ($this->class) {
+		$path   = $this->class . '.' . $this->type;
+		$config = array_get(self::$config, $path, []);
+		$model  = array_get($config, 'target_model');
 
-			// Blogs
-			case 'blog':
-				switch ($this->type) {
+		$text   = array_get($config, $this->aggregated ? 'text_aggregated' : 'text', 'did something strange (' . $path . ')');
+		$links  = [];
 
-					// Comment a blog entry
-					case 'comment':
-						return $this->aggregated
-							? 'commented to blog entries'
-							: 'commented to a blog entry';
+		// Get target links
+		if ($model) {
+			$targetIds = (array)$this->target_id;
+			foreach ($targetIds as $targetId) {
+				$links[] = $this->_link($model, $targetId);
+			}
+		}
+		$links = array_filter($links);
 
-					// Create a blog entry
-					case 'entry':
-						return $this->aggregated
-							? 'wrote new blog entries'
-							: 'wrote a new blog entry';
+		// Special cases
+		switch ($path) {
 
-				}
-				break;
-
-			// Events
-			case 'events':
-				switch ($this->type) {
-
-					// Create an event
-					case 'event':
-						return $this->aggregated
-							? 'created new events'
-							: 'created a new event';
-
-					// Edit an event
-					case 'event_edit':
-						return $this->aggregated
-							? 'updated events'
-							: 'updated an event';
-
-					// Favorite an event
-					case 'favorite':
-						return $this->aggregated
-							? 'added events to favorites'
-							: 'added an event to favorites';
-				}
-				break;
-
-			// Forum
-			case 'forum':
-				switch ($this->type) {
-
-					// Reply to a topic
-					case 'reply':
-						return $this->aggregated
-							? 'replied to topics'
-							: 'replied to topic';
-
-					// Create a topic
-					case 'topic':
-						return $this->aggregated
-							? 'started new topics'
-							: 'started a new topic';
-
-				}
-				break;
-
-			// Galleries
-			case 'galleries':
-				switch ($this->type) {
-
-					// Commente an image
-					case 'comment':
-						return $this->aggregated
-							? 'commented photos'
-							: 'commented a photo';
-
-					// Commente flyer
-					case 'comment_flyer':
-						return $this->aggregated
-							? 'commented flyers'
-							: 'commented a flyer';
-
-					// Edit a flyer
-					case 'flyer_edit':
-						return $this->aggregated
-							? 'updated flyers'
-							: 'updated a flyer';
-
-					// Create a noew
-					case 'note':
-						return $this->aggregated
-							? 'tagged images'
-							: 'tagged an image';
-
-					// Upload images
-					case 'upload':
-						return $this->aggregated
-							? 'added new photos to a galleries'
-							: 'added new photos to a gallery';
-
-				}
-				break;
-
-			// Music
-			case 'music':
-				switch ($this->type) {
-
-					// Add a mixtape
-					case 'mixtape':
-						return $this->aggregated
-							? 'added new mixtapes'
-							: 'added a new mixtape';
-
-					// Add a track
-					case 'track':
-						return $this->aggregated
-							? 'added new tracks'
-							: 'added a new track';
-
-				}
-				break;
-
-			// Users
-			case 'user':
-				switch ($this->type) {
-
-					// Change default image
-					case 'default_image':
-						return 'changed their profile image';
-
-					// Friend a user
-					case 'friend':
-						return $this->aggregated
-							? 'added friends'
-							: 'added a friend';
-
-				}
-				break;
-
-			// Venus
-			case 'venues':
-				switch ($this->type) {
-
-					// Add a venue
-					case 'venue':
-						return $this->aggregated
-							? 'created new venues'
-							: 'created a new venue';
-
-					// Edit a venue
-					case 'venue_edit':
-						return $this->aggregated
-							? 'updated venues'
-							: 'updated a venue';
-
+			case 'user.friend':
+				$last = array_pop($links);
+				if ($this->aggregated) {
+					$text  = sprintf($text, implode(', ', $links), $last);
+					$links = null;
+				} else {
+					$text = sprintf($text, $last);
 				}
 				break;
 
 		}
 
-		return 'did something weird (' . $this->class . '.' . $this->type . ')';
+		return $text . ($links ? '<br>' . implode('<br>', $links) : '');
+	}
+
+
+	/**
+	 * Get anchor to target model.
+	 *
+	 * @param   string   $targetModel
+	 * @param   integer  $targetId
+	 * @param   array    $dataModels
+	 * @return  string
+	 */
+	private function _link($targetModel, $targetId, $dataModels = []) {
+		switch ($targetModel) {
+
+			case 'User':
+				return HTML::user($targetId);
+
+			default:
+				if (class_exists($targetModel)) {
+
+					/** @var  Eloquent $target */
+					$target = new $targetModel;
+					if ($target->find($targetId)) {
+						return $target->getTable();
+					}
+
+				}
+
+		}
+
+		return null;
 	}
 
 
@@ -181,6 +126,30 @@ class NewsfeedItem extends Entity {
 	 */
 	public function newCollection(array $models = array()) {
 		return new NewsfeedItemCollection($models);
+	}
+
+
+	/**
+	 * Set data.
+	 *
+	 * @param  array  $value
+	 */
+	public function setDataAttribute(array $value = null) {
+		$this->attributes['data'] = $value ? json_encode($value) : null;
+	}
+
+
+	/**
+	 * Target model for non-aggregated items.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo|null
+	 */
+	public function target() {
+		$path   = $this->class . '.' . $this->type;
+		$config = array_get(self::$config, $path, []);
+		$model  = array_get($config, 'target_model');
+
+		return ($this->aggregated || !$model) ? null : $this->belongsTo($model, 'target_id');
 	}
 
 }

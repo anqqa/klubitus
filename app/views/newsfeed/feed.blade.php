@@ -1,7 +1,7 @@
 <section id="newsfeed">
 	<header>
 
-		<h3>What's up?</h3>
+		<h3>What's happening?</h3>
 
 	</header>
 	<div class="body">
