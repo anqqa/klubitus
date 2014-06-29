@@ -1,4 +1,4 @@
-<section id="newsfeed">
+<aside id="newsfeed">
 	<header>
 
 		<h3>What's happening?</h3>
@@ -10,9 +10,11 @@
 
 			@foreach ($items->aggregated() as $item)
 			<li class="media">
+				<!--
 				<div class="pull-left">
 					{{ HTML::avatar($item->user_id) }}
 				</div>
+				-->
 				<div class="media-body">
 					<small class="text-muted pull-right" title="{{ date('j.n.Y', $item->created) }}">{{ date('H:i', $item->created) }}</small>
 					{{ HTML::user($item->user_id) }}
@@ -24,4 +26,4 @@
 		</ul>
 
 	</div>
-</section>
+</aside>

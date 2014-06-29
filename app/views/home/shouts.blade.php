@@ -1,10 +1,10 @@
-<aside id="shouts" class="panel panel-default">
-	<header class="panel-heading">
+<aside id="shouts" class="pane pane-defult">
+	<header class="pane-heading">
 
-		<h3 class="panel-title">Shouts</h3>
+		<h3 class="pane-title">Shouts</h3>
 
 	</header>
-	<div class="panel-body">
+	<div class="pane-body">
 
 		<ul class="list-unstyled">
 			@foreach ($shouts->reverse() as $shout)

@@ -9,8 +9,7 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex() {
 		$this->layout->content = View::make('layouts._three_columns', array(
-			'left'   => $this->viewShouts(10),
-			'center' => $this->viewNewsfeed(50),
+			'right' => $this->viewShouts(10) . $this->viewNewsfeed(50),
 		));
 	}
 
