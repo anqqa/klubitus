@@ -8,26 +8,6 @@ abstract class Entity extends Eloquent {
 
 
 	/**
-	 * Get created stamp in unix format.
-	 *
-	 * @return  integer
-	 */
-	public function getCreatedAttribute() {
-		return strtotime($this->created_at);
-	}
-
-
-	/**
-	 * Get updated stamp in unix format.
-	 *
-	 * @return  integer
-	 */
-	public function getUpdatedAttribute() {
-		return strtotime($this->updated_at);
-	}
-
-
-	/**
 	 * Scope: latest.
 	 *
 	 * @param   \Illuminate\Database\Eloquent\Builder  $query

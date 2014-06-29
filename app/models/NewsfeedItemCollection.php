@@ -15,7 +15,7 @@ class NewsfeedItemCollection extends \Illuminate\Database\Eloquent\Collection {
 			$config = array_get(NewsfeedItem::config(), $path);
 
 			if ($config && isset($config['text_aggregated'])) {
-				return implode('.', [ $path, $model->user_id, date('Ymd', $model->created) ]);
+				return implode('.', [ $path, $model->user_id, date('Ymd', $model->created_at->timestamp) ]);
 			} else {
 				return $key;
 			}
