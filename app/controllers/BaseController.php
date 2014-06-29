@@ -3,6 +3,11 @@
 class BaseController extends Controller {
 
 	/**
+	 * @var  string  Page id
+	 */
+	protected $id;
+
+	/**
 	 * @var  string  Default layout
 	 */
 	protected $layout = 'layouts.default';
@@ -20,7 +25,7 @@ class BaseController extends Controller {
 		if (!is_null($this->layout)) {
 			$this->layout = View::make($this->layout, array(
 				'language' => Config::get('app.language', 'en'),
-				'id'       => '',
+				'id'       => $this->id,
 				'class'    => '',
 				'title'    => $this->title
 			));

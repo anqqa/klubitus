@@ -70,7 +70,7 @@ input.private                          { border-color: @brand-special; color: @b
 // BBCode
 // --------------------------------------------------
 .markItUpHeader                        { //height: 28px; position: relative;
-  & > ul                               { padding: 0; }
+  > ul                                 { padding: 0; }
 /*  & > ul                               { left: 0; margin: 0; position: absolute; top: 0; }
   ul ul                                { display: none; list-style-type: none; margin: 0; }
   .btn                                 { text-shadow: none; }*/
@@ -86,7 +86,7 @@ body                                   { border-top: 2px solid @gray-darker; }
 .content > .container                  { padding-bottom: @grid-gutter-width / 2; padding-top: @grid-gutter-width / 2;
   aside                                { position: relative; }
   section                              { margin-bottom: @line-height-computed; position: relative;
-    & > header                         {
+    > header                           {
       .nav                             { margin-bottom: 0; position: absolute; right: 0; top: 10px; }
     }
   }
@@ -97,7 +97,10 @@ body                                   { border-top: 2px solid @gray-darker; }
 // Main menu
 // --------------------------------------------------
 #mainmenu                              { background: transparent; border: 0 none;
-  .mainmenu                            { text-transform: uppercase; }
+  .mainmenu                            { text-transform: uppercase;
+    > .active > a                      { background: none; color: @gray-darker; position: relative; }
+    > .active > a:after                { border: 4px solid transparent; border-top-color: @gray-darker; content: ''; left: 50%; margin-left: -4px; position: absolute; .square(0); top: 0; }
+  }
   .navbar-right                        { margin-right: 0; }
   #search                              {
     .loader                            { display: none; position: absolute; right: @navbar-padding-horizontal * 2; top: 10px; }

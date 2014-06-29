@@ -1,6 +1,8 @@
 <?php
 
 class HomeController extends BaseController {
+	protected $id = 'home';
+
 
 	/**
 	 * Index.
