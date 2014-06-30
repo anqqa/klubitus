@@ -314,7 +314,9 @@ $(function() {
 
 
 	// Carousels
-//	$('.carousel').carousel({ interval: false });
+//	head.ready('bootstrap', function() {
+//		$('.carousel').carousel({ interval: false });
+//	});
 
 
 	// Lady load images
