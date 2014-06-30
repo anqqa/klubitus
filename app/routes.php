@@ -29,9 +29,7 @@ Route::get('logout', array('as' => 'session.destroy', 'uses' => 'SessionControll
 Route::get('oauth/facebook/login', array('as' => 'facebook-login', 'uses' => 'OAuthController@getFacebookLogin'));
 
 // User
-Route::bind('user', function($username) {
-	return User::username($username)->firstOrFail();
-});
+Route::bind('user', function($username) { return User::username($username)->firstOrFail(); });
 Route::get('member/{user}',            array('as' => 'user.profile',   'uses' => 'UserController@getProfile'));
 Route::get('member/{user?}/favorites', array('as' => 'user.favorites', 'uses' => 'UserController@getFavorites'));
 Route::get('member/{user?}/friends',   array('as' => 'user.friends',   'uses' => 'UserController@getFriends'));
@@ -40,15 +38,17 @@ Route::get('member/{user?}/settings',  array('as' => 'user.settings',  'uses' =>
 Route::get('signup',  array('as' => 'register', 'uses' => 'UserController@getRegister'));
 
 // Events
-Route::bind('event', function($event) {
-	return CalendarEvent::findOrFail((int)$event);
-});
+Route::bind('event', function($event) { return CalendarEvent::findOrFail((int)$event); });
 Route::get('events/{year?}/{month?}/{day?}', array('as' => 'events',      'uses' => 'EventController@getIndex'));
 Route::get('events/{year}/week/{week}',      array('as' => 'events.week', 'uses' => 'EventController@getIndex'));
 Route::get('event/{event}',                  array('as' => 'event',       'uses' => 'EventController@getEvent'));
 
 // Forum
 Route::get('messages', array('as' => 'forum.messages', 'uses' => 'ForumController@getMessages'));
+
+// Venues
+Route::bind('venue', function ($venue) { return Venue::findOrFail((int)$venue); });
+Route::get('venue/{venue}', array('as' => 'venue', 'uses' => 'VenueController@getVenue'));
 
 // Shouts
 Route::controller('shouts', 'ShoutController');
