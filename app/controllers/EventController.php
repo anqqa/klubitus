@@ -32,7 +32,7 @@ class EventController extends BaseController {
 			$range = 'month';
 		} else if ($week) {
 			$range = 'week';
-			$date  = $date->startOfYear()->addWeeks($week);
+			$date  = $date->startOfYear()->addWeeks($week - 1);
 		} else if ($year) {
 			$range = 'year';
 		} else {
