@@ -85,7 +85,7 @@ class CalendarEvent extends Entity {
 		return $query
 			->where('begins_at', '<=', $to)
 			->where('ends_at', '>=', $from->copy()->addHours(5))
-			->orderBy('begins_at', 'ASC')
+			->orderBy(DB::raw("date_trunc('day', begins_at)"), 'ASC')
 			->orderBy('city_name', 'ASC');
 	}
 
@@ -109,6 +109,16 @@ class CalendarEvent extends Entity {
 		$to = $from->copy()->endOfWeek();
 
 		return $this->scopeRange($query, $from, $to);
+	}
+
+
+	/**
+	 * Venue.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function venue() {
+		return $this->belongsTo('Venue');
 	}
 
 }

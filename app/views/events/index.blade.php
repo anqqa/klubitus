@@ -15,6 +15,7 @@
 				</div>
 
 				<div class="media-body">
+
 					@if ($event->favorite_count >= 100)
 					<span class="favorites">
 						<a href="#" class="text-lovely">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
@@ -30,10 +31,18 @@
 					@endif
 
 					<h4 class="media-heading">
-						{{ HTML::linkRoute('event', $event->name, array($event->slug)) }}
+						{{ HTML::linkRoute('event', $event->name, array($event->slug)) }}<br>
+						<small>
+							@if ($event->venue_id)
+							{{ HTML::linkRoute('venue', $event->venue->name, array($event->venue->slug)) }},
+							@elseif ($event->venue_name)
+							{{{ $event->venue_name }}},
+							@endif
+							{{{ $event->city_name }}}
+						</small>
 					</h4>
 
-					{{{ $event->venue_name }}}, {{{ $event->city_name }}}<br>
+
 					<small class="tags">{{{ $event->music }}}</small>
 
 				</div>
