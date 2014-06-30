@@ -8,6 +8,16 @@ abstract class Entity extends Eloquent {
 
 
 	/**
+	 * Url slug.
+	 *
+	 * @return  string
+	 */
+	public function getSlugAttribute() {
+		return implode('-', array($this->id, Text::slug($this->name)));
+	}
+
+
+	/**
 	 * Scope: latest.
 	 *
 	 * @param   \Illuminate\Database\Eloquent\Builder  $query

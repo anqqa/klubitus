@@ -84,7 +84,7 @@ class CalendarEvent extends Entity {
 	public function scopeRange(Builder $query, Carbon $from, Carbon $to) {
 		return $query
 			->where('begins_at', '<=', $to)
-			->where('ends_at', '>=', $from)
+			->where('ends_at', '>=', $from->copy()->addHours(5))
 			->orderBy('begins_at', 'ASC')
 			->orderBy('city_name', 'ASC');
 	}

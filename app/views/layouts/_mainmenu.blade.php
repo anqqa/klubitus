@@ -12,7 +12,7 @@
 
 		<ul class="nav navbar-nav collapse navbar-collapse mainmenu" role="menubar">
 			<li role="menuitem" class="{{ $id == 'events' ? 'active' : '' }}">
-				<a href="{{ URL::route('events.index') }}">Events</a>
+				<a href="{{ URL::route('events') }}">Events</a>
 			</li>
 			<li role="menuitem" class="{{ $id == 'forum' ? 'active' : '' }}">
 				<a href="/">Forum</a>

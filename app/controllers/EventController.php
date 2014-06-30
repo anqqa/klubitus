@@ -7,9 +7,17 @@ class EventController extends BaseController {
 
 
 	/**
-	 * Index.
+	 * Event.
 	 *
-	 * @return  \Illuminate\View\View
+	 * @param  CalendarEvent  $event
+	 */
+	public function getEvent(CalendarEvent $event) {
+
+	}
+
+
+	/**
+	 * Index.
 	 */
 	public function getIndex() {
 		$year  = Route::input('year');

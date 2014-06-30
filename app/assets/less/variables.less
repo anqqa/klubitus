@@ -10,7 +10,8 @@
 // Grays
 // -------------------------
 @white:                      #fff;
-@gray-darkest:               #111;
+@gray-darkest:               lighten(#000, 10%); // #111;
+@gray-lighter:               lighten(#000, 90%); // #e6e6e6
 @black:                      #000;
 
 
@@ -23,6 +24,8 @@
 // Scaffolding
 // -------------------------
 @body-bg:                    #f1f1f1;
+@link-color-alt:             @gray-darkest;
+@link-hover-color-alt:       @link-hover-color;
 @text-color:                 @gray-darker;
 @dark-body-bg:               #1a1a1a;
 @dark-text-color:            @gray-light;
@@ -47,8 +50,8 @@
 @font-size-small:            floor((@font-size-base * 0.85)); // ~10px
 @line-height-computed:       ceil((@font-size-base * @line-height-base)); // ~18px
 
-@headings-font-family:       @font-family-custom;
-@headings-font-weight:       @font-weight-light-custom;
+//@headings-font-family:       @font-family-custom;
+//@headings-font-weight:       @font-weight-light-custom;
 @dark-headings-color:        #c29d52;
 
 @text-color-me:              mix(@brand-warning, @text-color);
@@ -202,3 +205,8 @@
 // Wells
 // -------------------------
 @dark-well-bg:               #202020;
+
+
+// Breadcrumbs
+// -------------------------
+@breadcrumb-bg:              @gray-lighter;
