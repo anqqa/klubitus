@@ -3,6 +3,24 @@
 class Text {
 
 	/**
+	 * Transforms an database id to file path, 1234567 = 01/23/45
+	 *
+	 * @param   integer  $id
+	 * @return  string
+	 */
+	public static function idToPath($id) {
+
+		// Convert numeric id to hex and split to chunks of 2
+		$path = str_split(sprintf('%08x', (int)$id), 2);
+
+		// Scrap the last chunk, 256 files per dir
+		array_pop($path);
+
+		return implode('/', $path);
+	}
+
+
+	/**
 	 * Generate a URL friendly "slug" from a given string.
 	 *
 	 * @param   string  $string

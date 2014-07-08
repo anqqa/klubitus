@@ -11,7 +11,10 @@
 			@endif
 
 			<li class="media">
-				<div class="pull-left">
+				<div class="flyer pull-left">
+					@if ($flyer = $event->flyer)
+					{{ HTML::image($flyer->image->thumbUrl, 'Flyer') }}
+					@endif
 				</div>
 
 				<div class="media-body">

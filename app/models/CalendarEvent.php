@@ -13,6 +13,26 @@ class CalendarEvent extends Entity {
 
 
 	/**
+	 * Main flyer.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function flyer() {
+		return $this->belongsTo('Flyer');
+	}
+
+
+	/**
+	 * Flyers.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function flyers() {
+		return $this->hasMany('Flyer');
+	}
+
+
+	/**
 	 * Start date in string format.
 	 *
 	 * @return  string
@@ -84,7 +104,7 @@ class CalendarEvent extends Entity {
 	public function scopeRange(Builder $query, Carbon $from, Carbon $to) {
 		return $query
 			->where('begins_at', '<=', $to)
-			->where('ends_at', '>=', $from->copy()->addHours(5))
+			->where('ends_at', '>=', $from->copy()->addHours(5)) // Only get after 5am
 			->orderBy(DB::raw("date_trunc('day', begins_at)"), 'ASC')
 			->orderBy('city_name', 'ASC');
 	}

@@ -3,12 +3,20 @@
 #events                                {
   .events .date                        { .breadcrumb; font-weight: bold; text-transform: uppercase; }
   .events .media                       {
+    .flyer                             { position: relative; width: 140px; z-index: 1;
+      img                              { left: 0; position: absolute;top: 0; transition: all .1s; }
+    }
+    .media-body                        { margin-left: 150px; }
     h4 a                               { color: @link-color-alt; }
     h4 a:hover                         { color: @link-hover-color-alt; }
-    &:hover h4 a                       { color: @link-color; }
     .favorites                         { .pull-right; }
     .favorites a:hover                 { text-decoration: none; }
     .tags                              { .text-muted; }
+
+    &:hover                            { overflow: visible;
+      .flyer img                       { margin-top: -50%; top: 25px; }
+      h4 a                             { color: @link-color; }
+    }
 
     + .date                            { margin-top: 10px; }
     + .media                           { border-top: 1px solid @gray-lighter; padding-top: 10px; }
