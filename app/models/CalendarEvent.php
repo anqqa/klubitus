@@ -13,6 +13,34 @@ class CalendarEvent extends Entity {
 
 
 	/**
+	 * Users who added this to favorites.
+	 *
+	 * @param   User   $onlyFriendsOf  Get only user's friends' favorites
+	 * @return  array  user ids
+	 */
+	public function favorites(User $onlyFriendsOf = null) {
+		$query = DB::table('favorites')
+			->where('favorites.event_id', '=', $this->id)
+			->select('favorites.user_id');
+
+		if ($onlyFriendsOf) {
+			$query
+				->join('friends', 'friends.friend_id', '=', 'favorites.user_id')
+				->where('friends.user_id', '=', $onlyFriendsOf->id);
+
+			/*
+			return $this->belongsToMany('User', 'favorites', 'event_id')
+				->join('friends', 'friends.friend_id', '=', 'users.id')
+				->where('friends.user_id', '=', $onlyFriendsOf->id);
+			*/
+		}
+
+		return $query->lists('favorites.user_id');
+
+	}
+
+
+	/**
 	 * Main flyer.
 	 *
 	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo

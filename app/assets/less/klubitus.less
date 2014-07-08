@@ -52,7 +52,8 @@ div.loading                            { .ajax; position: absolute; right: 5px; 
 a.friend                               { text-decoration: underline; }
 .avatar                                { display: inline-block; .square(50px); text-align: center;
 //  &.small                              { .square(25px); }
-  img                                  { max-height: 100%; max-width: 100%; }
+  &.dummy                              { background: @gray-lighter; .img-circle; line-height: 50px; .text-muted; }
+  img                                  { .img-circle; max-height: 100%; max-width: 100%; }
 }
 .avatar + .user                        { margin-left: 5px; }
 input.private                          { border-color: @brand-special; color: @brand-special; }

@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Database\Query\Builder;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -65,9 +66,29 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 	/**
+	 * User's friends.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function friends() {
+		return $this->belongsToMany('User', 'friends', 'friend_id', 'user_id');
+	}
+
+
+	/**
+	 * User's friends.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function friendsOf() {
+		return $this->belongsToMany('User', 'friends', 'user_id', 'friend_id');
+	}
+
+
+	/**
 	 * Get the unique identifier for the user.
 	 *
-	 * @return mixed
+	 * @return  mixed
 	 */
 	public function getAuthIdentifier() {
 		return $this->getKey();
@@ -158,11 +179,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/**
 	 * Scope: latest.
 	 *
-	 * @param   \Illuminate\Database\Eloquent\Builder  $query
-	 * @param   string                                 $username
-	 * @return  \Illuminate\Database\Eloquent\Builder
+	 * @param   Builder  $query
+	 * @param   string   $username
+	 * @return  Builder
 	 */
-	public function scopeUsername(\Illuminate\Database\Eloquent\Builder $query, $username) {
+	public function scopeUsername(Builder $query, $username) {
 		return $query->where('username_clean', '=', Text::slug($username));
 	}
 

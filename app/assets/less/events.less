@@ -9,8 +9,12 @@
     .media-body                        { margin-left: 150px; }
     h4 a                               { color: @link-color-alt; }
     h4 a:hover                         { color: @link-hover-color-alt; }
-    .favorites                         { .pull-right; }
+    .favorites                         { .pull-right; .text-right; }
     .favorites a:hover                 { text-decoration: none; }
+    .friends                           { margin-top: 10px;
+      .avatar                          { .square(25px); }
+      .avatar.dummy                    { font-size: @font-size-small; line-height: 25px;  }
+    }
     .tags                              { .text-muted; }
 
     &:hover                            { overflow: visible;

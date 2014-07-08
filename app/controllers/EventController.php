@@ -60,7 +60,7 @@ class EventController extends BaseController {
 		}
 
 		return View::make('events.index', array(
-			'events' => $events->get(),
+			'events' => $events->get()
 		));
 	}
 

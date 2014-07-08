@@ -19,22 +19,40 @@
 
 				<div class="media-body">
 
-					@if ($event->favorite_count >= 100)
-					<span class="favorites">
+					@if ($event->favorite_count)
+					<div class="favorites">
+
+						@if ($event->favorite_count >= 100)
 						<a href="#" class="text-lovely">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
-					</span>
-					@elseif ($event->favorite_count >= 50)
-					<small class="favorites">
-						<a href="#" class="text-success">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
-					</small>
-					@elseif ($event->favorite_count > 1)
-					<small class="favorites">
-						<a href="#" class="text-muted">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
-					</small>
+						@elseif ($event->favorite_count >= 50)
+						<a href="#" class="text-success small">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
+						@elseif ($event->favorite_count > 1)
+						<a href="#" class="text-muted small">{{{ $event->favorite_count }}} <i class="fa fa-heart"></i></a>
+						@endif
+
+						@if ($viewer && $favorers = $event->favorites($viewer))
+							@if (count($favorers) > ($max = 3) + 1)
+						<div class="friends">
+								@foreach (array_rand($favorers, $max) as $key)
+							{{ HTML::avatar($favorers[$key]) }}
+								@endforeach
+							<span class="avatar dummy">+{{ count($favorers) - $max }}</span>
+						</div>
+							@else
+						<div class="friends">
+								@foreach ($favorers as $userId)
+							{{ HTML::avatar($userId) }}
+								@endforeach
+						</div>
+							@endif
+						@endif
+
+					</div>
 					@endif
 
 					<h4 class="media-heading">
 						{{ HTML::linkRoute('event', $event->name, array($event->slug)) }}<br>
+
 						<small>
 							@if ($event->venue_id)
 							{{ HTML::linkRoute('venue', $event->venue->name, array($event->venue->slug)) }},
