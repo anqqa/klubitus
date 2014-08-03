@@ -49,7 +49,7 @@ class EventController extends BaseController {
 	/**
 	 * Big events list view.
 	 *
-	 * @return  \Illuminate\View\View
+	 * @return  string
 	 */
 	protected function viewEvents(Carbon $date, $range = 'week') {
 		switch ($range) {
@@ -61,7 +61,7 @@ class EventController extends BaseController {
 
 		return View::make('events.index', array(
 			'events' => $events->get()
-		));
+		))->render();
 	}
 
 }

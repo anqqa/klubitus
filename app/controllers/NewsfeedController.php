@@ -15,13 +15,13 @@ class NewsfeedController extends BaseController {
 	 * Shouts view.
 	 *
 	 * @param   integer  $limit
-	 * @return  \Illuminate\View\View
+	 * @return  string
 	 */
 	public function viewNewsfeed($limit = 10) {
 		return View::make('newsfeed.feed', array(
 			'id'    => 'newsfeed',
 			'items' => NewsfeedItem::latest()->take(min(100, $limit))->get(),
-		));
+		))->render();
 	}
 
 }

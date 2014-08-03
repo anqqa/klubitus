@@ -14,7 +14,7 @@ class ShoutController extends BaseController {
 	/**
 	 * Shout.
 	 *
-	 * @return  \Illuminate\Http\RedirectResponse
+	 * @return  string|\Illuminate\Http\RedirectResponse
 	 */
 	public function postShout() {
 		if (Auth::check()) {
@@ -45,7 +45,7 @@ class ShoutController extends BaseController {
 	 * Shouts view.
 	 *
 	 * @param   integer  $limit
-	 * @return  \Illuminate\View\View
+	 * @return  string
 	 */
 	public function viewShouts($limit = 10) {
 		return View::make('home.shouts', array(
@@ -53,7 +53,7 @@ class ShoutController extends BaseController {
 			'title'  => 'Shouts',
 			'shouts' => Shout::latest()->take(min(100, $limit))->get(),
 			'limit'  => $limit,
-		));
+		))->render();
 	}
 
 }
