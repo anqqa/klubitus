@@ -2,10 +2,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-manifest');
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -47,18 +49,34 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						src:    [ 'bootstrap/*', 'public/**' ],
+						src:    [ 'bootstrap/*', 'public/**', '!public/packages/**' ],
 						dest:   'build/'
 					},
 					{
 						expand: true,
-						src:    [ 'app/**', '!app/{assets,commands,config,database,tests}/**' ],
+						src:    [ 'app/**', '!app/{assets,commands,config,database,storage,tests}/**' ],
 						dest:   'build/'
 					},
 					{
 						expand: true,
 						src:    [ 'app/config/**', '!app/config/{dev,staging,testing}/**' ],
 						dest:   'build/'
+					},
+					{
+						expand: true,
+						src:    [ 'app/storage/*' ],
+						dest:   'build/',
+						filter: 'isDirectory'
+					}
+				]
+			},
+			deploy: {
+				files: [
+					{
+						expand: true,
+						cwd:    'build',
+						src:    [ '**/*' ],
+						dest:   '../8.klubitus.org'
 					}
 				]
 			}
@@ -94,6 +112,17 @@ module.exports = function(grunt) {
 			}
 		},
 
+		manifest: {
+			generate: {
+				options: {
+					basePath: 'build/public',
+					network:  [ '*', 'http://*', 'https://*']
+				},
+				src:  [ 'assets/**/*.{min.js,css,gif,png,jpg}' ],
+				dest: 'build/public/manifest.appcache'
+			}
+		},
+
 		uglify: {
 			options: {
 				mangle: false
@@ -119,11 +148,11 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.registerTask('prebuild', [ 'clean', 'css', 'js' ]);
-	grunt.registerTask('postbuild', [ 'imagemin' ]);
-	grunt.registerTask('build', [ 'prebuild', 'copy:build', 'postbuild' ]);
-	grunt.registerTaks('deploy', [ 'build' ]);
 	grunt.registerTask('js', [ 'concat', 'uglify' ]);
 	grunt.registerTask('css', [ 'less' ]);
+	grunt.registerTask('prebuild', [ 'clean', 'css', 'js' ]);
+	grunt.registerTask('postbuild', [ 'manifest', 'imagemin' ]);
+	grunt.registerTask('build', [ 'prebuild', 'copy:build', 'postbuild' ]);
+	grunt.registerTask('deploy', [ 'build', 'copy:deploy' ]);
 	grunt.registerTask('default', [ 'js', 'css' ]);
 };
