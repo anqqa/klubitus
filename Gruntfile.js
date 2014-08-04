@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-manifest');
+	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -49,7 +50,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						src:    [ 'bootstrap/*', 'public/**', '!public/packages/**' ],
+						src:    [ 'bootstrap/*', 'vendor/**', 'public/**', '!public/packages/**' ],
 						dest:   'build/'
 					},
 					{
@@ -120,6 +121,12 @@ module.exports = function(grunt) {
 				},
 				src:  [ 'assets/**/*.{min.js,css,gif,png,jpg}' ],
 				dest: 'build/public/manifest.appcache'
+			}
+		},
+
+		shell: {
+			chown: {
+				command: 'sudo chgrp -R apache ../8.klubitus.org/app/storage/*'
 			}
 		},
 
