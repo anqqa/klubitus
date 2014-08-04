@@ -13,6 +13,8 @@ composer.phar
 /public/assets/js
 /public/packages
 
+/build
+
 CONTRIBUTING.md
 _ide_helper.php
 
