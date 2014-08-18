@@ -11,6 +11,20 @@
 |
 */
 
+// API
+Route::group([ 'prefix' => '/api/v2' ], function() {
+	Route::post('auth', 'SessionController@store');
+	Route::delete('auth', 'SessionController@destroy');
+
+	Route::resource('shouts', 'ShoutController', [ 'only' => [ 'index', 'store' ]]);
+});
+
+// AngularJS front-end
+Route::any('{all}', function($uri) {
+	return View::make('index');
+})->where('all', '.*');
+
+/*
 // Globals
 Route::pattern('year', '[\d]{4}');
 Route::pattern('month', '[01]?\d');
@@ -52,4 +66,4 @@ Route::get('venue/{venue}', array('as' => 'venue', 'uses' => 'VenueController@ge
 
 // Shouts
 Route::controller('shouts', 'ShoutController');
-
+*/

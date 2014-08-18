@@ -2,6 +2,22 @@
 class ShoutController extends BaseController {
 
 	/**
+	 * API: Latest shouts.
+	 */
+	public function index() {
+		return Shout::latest()->take(min(100, Input::get('limit', 100)))->get();
+	}
+
+
+	/**
+	 * API: Save shout.
+	 */
+	public function store() {
+
+	}
+
+
+	/**
 	 * Index.
 	 */
 	public function getIndex() {

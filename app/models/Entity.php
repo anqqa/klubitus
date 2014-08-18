@@ -1,7 +1,7 @@
 <?php
 
 abstract class Entity extends Eloquent {
-	protected $guarded = array('id', 'created_at', 'modified_at');
+	protected $guarded = array('id', 'created_at', 'updated_at');
 
 	/** @var  string  Column for latest scope */
 	protected $latestColumn = 'id';

@@ -1,0 +1,18 @@
+<aside id="shouts" class="pane pane-defult">
+	<header class="pane-heading">
+
+		<h3 class="pane-title">Shouts</h3>
+
+	</header>
+	<div class="pane-body">
+
+		<ul class="list-unstyled">
+			<li ng-repeat="shout in shouts | orderBy:'id'">
+				<span class="text-muted" title="date">{{ shout.created_at | toDate | date:'HH:mm' }}</span>
+				{{ shout.author_id }}
+				{{ shout.shout }}
+			</li>
+		</ul>
+
+	</div>
+</aside>

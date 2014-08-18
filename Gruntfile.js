@@ -23,15 +23,26 @@ module.exports = function(grunt) {
 			},
 			vendor: {
 				src: [
-					'app/assets/js/vendor/jquery.markitup.js',
-					'app/assets/js/vendor/markitup.bbcode.js',
-					'app/assets/js/vendor/jquery.cookie.js'
+						'bower_components/lodash/dist/lodash.js',
+						'bower_components/jquery/dist/jquery.js',
+						'bower_components/angular/angular.js',
+						'bower_components/ng-resource/angular-resource.js',
+						'bower_components/ng-route/angular-route.js',
+						'bower_components/ui-router/release/angular-ui-router.js'
+//					'app/assets/js/vendor/jquery.markitup.js',
+//					'app/assets/js/vendor/markitup.bbcode.js',
+//					'app/assets/js/vendor/jquery.cookie.js'
 				],
 				dest: 'public/assets/js/vendor.js'
 			},
 			klubitus: {
 				src: [
-					'app/assets/js/klubitus.js',
+						'app/assets/js/app.js',
+						'app/assets/js/controllers/*.js',
+						'app/assets/js/directives/*.js',
+						'app/assets/js/filters/*.js',
+						'app/assets/js/services/*.js'
+/*					'app/assets/js/klubitus.js',
 					'app/assets/js/jquery.googlemap.js',
 					'app/assets/js/jquery.dialogify.js',
 					'app/assets/js/jquery.ajaxify.js',
@@ -39,7 +50,7 @@ module.exports = function(grunt) {
 					'app/assets/js/jquery.autocomplete.geo.js',
 					'app/assets/js/jquery.autocomplete.user.js',
 					'app/assets/js/jquery.autocomplete.venue.js',
-					'app/assets/js/jquery.notes.js'
+					'app/assets/js/jquery.notes.js'*/
 				],
 				dest: 'public/assets/js/klubitus.js'
 			}
