@@ -44,19 +44,31 @@ class SessionController extends BaseController {
 			), (bool)Input::get('remember'))) {
 
 				// Login successful
-				return Redirect::intended('/');
+				return Response::json([
+							'status' => 'success',
+							'user' =>   Auth::user()->toArray()
+						], 202);
+				//return Redirect::intended('/');
 
 			} else {
 
 				// Login failed
 				$form->getErrors()->add('password', 'Nope!');
 
-			}
-		}
+				return Response::json([
+							'status' => 'error',
+							'messages' => $form->getErrors()->toArray()
+						], 401);
 
-		$this->layout->content = View::make('layouts._two_columns', array(
-			'left' => $this->viewLogin($form)
-		));
+			}
+		} else {
+
+			return Response::json([
+						'status' => 'error',
+						'messages' => $form->getErrors()->toArray()
+					], 401);
+
+		}
 	}
 
 

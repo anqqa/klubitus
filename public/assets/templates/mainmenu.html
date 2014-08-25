@@ -49,7 +49,7 @@
 				<a href="/auth/login" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-sign-in"></i> Login
 				</a>
-				<div class="dropdown-menu dropdown-menu-right" ng-include="'assets/templates/login.html'"></div>
+				<div class="dropdown-menu dropdown-menu-right" ng-include="'assets/templates/login.html'" ng-controller="LoginController"></div>
 			</li>
 
 			<li ng-if="viewer" id="notifications"></li>

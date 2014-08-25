@@ -1,5 +1,5 @@
 var klubitusApp = angular
-		.module('klubitusApp', [ 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.router' ])
+		.module('klubitusApp', [ 'ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.router' ])
 
 		// Routes
 		.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
