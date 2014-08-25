@@ -17,7 +17,7 @@ class ShoutController extends BaseController {
 	 * API: Latest shouts.
 	 */
 	public function index() {
-		return $this->shouts->getLatest(min(100, abs((int)Input::get('limit', 100))));
+		return $this->shouts->getLatest(min(100, abs((int)Input::get('limit', 100))), 'id', 'user');
 	}
 
 

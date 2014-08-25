@@ -1,6 +1,10 @@
 <?php
 class NewsfeedItem extends Entity {
-	protected $table = 'newsfeeditems';
+	const CREATED_AT = 'stamp';
+
+	protected $table   = 'newsfeeditems';
+	protected $visible = [ 'id', 'user_id', 'stamp', 'class', 'type', 'target_id', 'data', 'user' ];
+	protected $appends = [ 'text' ];
 
 	public $aggregated = false;
 
@@ -150,6 +154,11 @@ class NewsfeedItem extends Entity {
 		$model  = array_get($config, 'target_model');
 
 		return ($this->aggregated || !$model) ? null : $this->belongsTo($model, 'target_id');
+	}
+
+
+	public function user() {
+		return $this->belongsTo('UserLight', 'user_id');
 	}
 
 }

@@ -13,10 +13,11 @@
 
 // API
 Route::group([ 'prefix' => '/api/v2' ], function() {
-	Route::post('auth', 'SessionController@store');
-	Route::delete('auth', 'SessionController@destroy');
+			Route::post('auth', 'SessionController@store');
+			Route::delete('auth', 'SessionController@destroy');
 
-	Route::resource('shouts', 'ShoutController', [ 'only' => [ 'index', 'store' ]]);
+			Route::resource('newsfeed', 'NewsfeedController', [ 'only' => [ 'index' ]]);
+			Route::resource('shouts', 'ShoutController', [ 'only' => [ 'index', 'store' ]]);
 });
 
 // AngularJS front-end

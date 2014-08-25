@@ -1,0 +1,20 @@
+<aside id="newsfeed" class="pane pane-default">
+	<header class="pane-heading">
+
+		<h3 class="pane-title">What's happening?</h3>
+
+	</header>
+	<div class="pane-body">
+
+		<ul class="media-list">
+			<li ng-repeat="item in newsfeed">
+				<div class="media-body">
+					<small class="text-muted pull-right" title="{{ item.stamp * 1000 | date:'d.M.yyyy' }}">{{ item.stamp * 1000 | date:'HH:mm' }}</small>
+					<klubitus-user user="item.user"></klubitus-user>
+					{{ item.text }}
+				</div>
+			</li>
+		</ul>
+
+	</div>
+</aside>

@@ -1,10 +1,10 @@
 <?php
-class ShoutRepository extends EloquentRepository {
+class NewsfeedRepository extends EloquentRepository {
 
 	/**
-	 * @param  Shout  $model
+	 * @param  NewsfeedItem  $model
 	 */
-	public function __construct(Shout $model) {
+	public function __construct(NewsfeedItem $model) {
 		$this->model = $model;
 	}
 
@@ -15,12 +15,11 @@ class ShoutRepository extends EloquentRepository {
 	 * @param   integer  $count
 	 * @return  \Illuminate\Database\Eloquent\Collection
 	 */
-/*
-	public function getLatest($count) {
+/*	public function getLatest($count) {
 		return $this->model->with('user')
 		                   ->orderBy('id', 'desc')
 		                   ->take($count)
 		                   ->get();
-	}
-*/
+	}*/
+
 }

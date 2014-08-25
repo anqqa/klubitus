@@ -193,7 +193,8 @@ HTML::macro('user', function($user = null, $username = null, $url = null) {
 		}
 
 		if (!$url) {
-			$url = URL::route('user.profile', array('user' => Text::slug($username)));
+			//$url = URL::route('user.profile', array('user' => Text::slug($username)));
+			$url = '/member/' . Text::slug($username);
 		}
 
 		return '<a href="' . $url . '" class="' . implode(' ', $classes) . '">' . e($username) . '</a>';

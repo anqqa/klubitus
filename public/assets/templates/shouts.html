@@ -1,4 +1,4 @@
-<aside id="shouts" class="pane pane-defult">
+<aside id="shouts" class="pane pane-default">
 	<header class="pane-heading">
 
 		<h3 class="pane-title">Shouts</h3>
@@ -8,7 +8,7 @@
 
 		<ul class="list-unstyled">
 			<li ng-repeat="shout in shouts | orderBy:'id'">
-				<span class="text-muted" title="date">{{ shout.created * 1000 | date:'HH:mm' }}</span>
+				<span class="text-muted" title="{{ shout.created * 1000 | date:'d.M.yyyy' }}">{{ shout.created * 1000 | date:'HH:mm' }}</span>
 				<klubitus-user user="shout.user"></klubitus-user>:
 				{{ shout.shout }}
 			</li>

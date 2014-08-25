@@ -59,10 +59,17 @@ abstract class EloquentRepository {
 	 *
 	 * @param   $count
 	 * @param   string  $column
+	 * @param   array   $with    Relationships
 	 * @return  \Illuminate\Database\Eloquent\Collection
 	 */
-	public function getLatest($count, $column = 'id') {
-		return $this->model->orderBy($column, 'desc')->take($count)->get();
+	public function getLatest($count, $column = 'id', $with = []) {
+		$query = $this->model->orderBy($column, 'desc');
+
+		if ($with) {
+			$query = $query->with($with);
+		}
+
+		return $query->take($count)->get();
 	}
 
 

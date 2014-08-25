@@ -1,6 +1,29 @@
 <?php
 class NewsfeedController extends BaseController {
 
+	/** @var  NewsfeedRepository */
+	protected $newsfeed;
+
+
+	/**
+	 * @param  NewsfeedRepository  $newsfeed
+	 */
+	public function __construct(NewsfeedRepository $newsfeed) {
+		$this->newsfeed = $newsfeed;
+	}
+
+
+	/**
+	 * API: Latest shouts.
+	 */
+	public function index() {
+		return $this->newsfeed
+				->getLatest(min(100, abs((int)Input::get('limit', 100))), 'id', 'user')
+				->aggregated()
+				->values();
+	}
+
+
 	/**
 	 * Index.
 	 */
