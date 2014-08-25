@@ -2,19 +2,25 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
-				left
+				<aside ng-if="!viewer" id="login" class="pane pane-default">
+					<header class="pane-heading">
+
+						<h3 class="pane-title">Login</h3>
+
+					</header>
+					<div class="pane-body" ng-include="'assets/templates/login.html'"></div>
+				</aside>
 
 			</div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 
-				center
 
 			</div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<klubitus-shouts></klubitus-shouts>
 
