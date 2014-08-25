@@ -8,8 +8,8 @@
 
 		<ul class="list-unstyled">
 			<li ng-repeat="shout in shouts | orderBy:'id'">
-				<span class="text-muted" title="date">{{ shout.created_at | toDate | date:'HH:mm' }}</span>
-				{{ shout.author_id }}
+				<span class="text-muted" title="date">{{ shout.created * 1000 | date:'HH:mm' }}</span>
+				{{ shout.user.username }}
 				{{ shout.shout }}
 			</li>
 		</ul>

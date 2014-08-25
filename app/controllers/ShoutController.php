@@ -1,11 +1,23 @@
 <?php
 class ShoutController extends BaseController {
 
+	/** @var  ShoutRepository */
+	protected $shouts;
+
+
+	/**
+	 * @param  ShoutRepository  $shouts
+	 */
+	public function __construct(ShoutRepository $shouts) {
+		$this->shouts = $shouts;
+	}
+
+
 	/**
 	 * API: Latest shouts.
 	 */
 	public function index() {
-		return Shout::latest()->take(min(100, Input::get('limit', 100)))->get();
+		return $this->shouts->getLatest(min(100, abs((int)Input::get('limit', 100))));
 	}
 
 
