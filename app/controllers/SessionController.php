@@ -6,33 +6,34 @@ class SessionController extends BaseController {
 	 * Show login.
 	 */
 	public function create() {
-		$this->layout->content = View::make('layouts._two_columns', array(
-			'left' => $this->viewLogin()
-		));
 	}
 
 
 	/**
 	 * Logout.
 	 *
-	 * @return  \Illuminate\Http\RedirectResponse
+	 * @return  \Illuminate\Http\JsonResponse
 	 */
 	public function destroy() {
 		Auth::logout();
 
-		return Redirect::to('/')->with('message', 'Bye bye!');
+		return Response::json([
+					'status' => 'error',
+				], 200);
 	}
 
 
 	/**
-	 * Attempt to login.
+	 * Login.
+	 *
+	 * @return  \Illuminate\Http\JsonResponse
 	 */
 	public function store() {
 		$form = new BaseForm();
 
 		if ($form->isValid([
-			'username' => 'required',
-			'password' => 'required'
+					'username' => 'required',
+					'password' => 'required'
 		])) {
 
 			// Attempt login
@@ -46,9 +47,8 @@ class SessionController extends BaseController {
 				// Login successful
 				return Response::json([
 							'status' => 'success',
-							'user' =>   Auth::user()->toArray()
+							'user'   => Auth::user()->toArray()
 						], 202);
-				//return Redirect::intended('/');
 
 			} else {
 
@@ -57,7 +57,7 @@ class SessionController extends BaseController {
 
 				return Response::json([
 							'status' => 'error',
-							'messages' => $form->getErrors()->toArray()
+							'errors' => $form->getErrors()->toArray()
 						], 401);
 
 			}
@@ -65,24 +65,10 @@ class SessionController extends BaseController {
 
 			return Response::json([
 						'status' => 'error',
-						'messages' => $form->getErrors()->toArray()
+						'errors' => $form->getErrors()->toArray()
 					], 401);
 
 		}
-	}
-
-
-	/**
-	 * Shouts view.
-	 *
-	 * @param   BaseForm  $form
-	 * @return  \Illuminate\View\View
-	 */
-	protected function viewLogin(BaseForm $form = null) {
-		return View::make('home.login', array(
-			'title' => 'Login',
-			'form'  => $form,
-		));
 	}
 
 }

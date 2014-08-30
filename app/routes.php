@@ -13,7 +13,7 @@
 
 // API
 Route::group([ 'prefix' => '/api/v2' ], function() {
-			Route::resource('auth', 'SessionController');
+			Route::resource('auth', 'SessionController', [ 'only' => [ 'store', 'destroy' ]]);
 //			Route::post('auth', 'SessionController@store');
 //			Route::delete('auth', 'SessionController@destroy');
 

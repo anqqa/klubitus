@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 						'bower_components/ng-resource/angular-resource.js',
 						'bower_components/ng-route/angular-route.js',
 						'bower_components/ng-sanitize/angular-sanitize.js',
+						'bower_components/ng-storage/ngStorage.js',
 						'bower_components/ui-router/release/angular-ui-router.js',
 						'app/assets/js/vendor/ui-bootstrap-tpls-0.11.0.js'
 //					'app/assets/js/vendor/jquery.markitup.js',

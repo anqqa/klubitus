@@ -5,6 +5,31 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\Builder;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
+	protected $table   = 'users';
+	protected $visible = [
+		'id',
+		'adds',
+		'avatar',
+		'city_name',
+		'comment_count',
+		'created',
+		'description',
+		'display_name',
+		'dob',
+		'gender',
+		'homepage',
+		'last_login',
+		'latitude',
+		'left_comment_count',
+		'longitude',
+		'modified',
+		'name',
+		'post_count',
+		'settings',
+		'signature',
+		'title',
+		'username',
+	];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

@@ -39,22 +39,22 @@
 			</li>
 			-->
 
-			<li ng-if="!viewer">
+			<li ng-if="!authenticated">
 				<a href="/register" title="Did we mention it's FREE!">
 					<i class="fa fa-heart"></i> Sign up
 				</a>
 			</li>
 
-			<li ng-if="!viewer" id="signin" class="dropdown">
+			<li ng-if="!authenticated" id="signin" class="dropdown">
 				<a href="/auth/login" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-sign-in"></i> Login
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" ng-include="'assets/templates/login.html'" ng-controller="LoginController"></div>
 			</li>
 
-			<li ng-if="viewer" id="notifications"></li>
+			<li ng-if="authenticated" id="notifications"></li>
 
-			<li ng-if="viewer" id="visitor" class="dropdown">
+			<li ng-if="authenticated" id="visitor" class="dropdown">
 				<a class="user dropdown-toggle" href="#menu-profile" data-toggle="dropdown">{{ viewer.username }}<span class="caret"></span></i></a>
 				<ul class="dropdown-menu pull-right" role="menu">
 					<li role="menuitem">
@@ -64,7 +64,7 @@
 						<a href="/friends"><i class="fa fa-fw fa-group"></i> Friends</a>
 						<a href="/ignores"><i class="fa fa-fw fa-ban"></i> Ignores</a>
 						<a href="/settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
-						<a href="/logout"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+						<a ng-controller="LoginController" ng-click="logout()"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
 					</li>
 				</ul>
 			</li>

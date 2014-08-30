@@ -1,6 +1,7 @@
 angular
 		.module('klubitusApp')
-		.controller('LoginController', function($scope, $sanitize, Auth) {
+		.controller('LoginController', function($rootScope, $scope, $localStorage, Auth) {
+			$rootScope.authenticated = !!$localStorage.user;
 
 			// Alerts
 			$scope.alerts = [];
@@ -12,24 +13,33 @@ angular
 			$scope.user  = { remember: true };
 			$scope.login = function() {
 				Auth.save({
-					'username': $sanitize($scope.user.username),
-					'password': $sanitize($scope.user.password),
-					'remember': $scope.user.remember
-				},
-				function() {
+							'username': $scope.user.username,
+							'password': $scope.user.password,
+							'remember': $scope.user.remember
+						},
+						function(response) {
 
-					// Success
-					console.log('yay!');
+							// Success
+							$localStorage.user = response.user;
+							$rootScope.authenticated = true;
 
-				},
-				function(response) {
+						},
+						function(response) {
 
-					// Error
-					console.dir(response);
+							// Error
+							console.dir(response);
 
-					$scope.alerts = [{ type: 'warning', msg: response.data.message }];
+							$scope.alerts = [{ type: 'warning', msg: response.data.message }];
 
-				});
-				console.dir($scope.user);
-			}
+						});
+			};
+
+			// Logout
+			$scope.logout = function() {
+				Auth.delete({});
+
+				delete $localStorage.user;
+				$rootScope.authenticated = false;
+			};
+
 		});

@@ -5,14 +5,14 @@
 class UserLight extends Entity {
 	protected $table   = 'users';
 	protected $visible = [
-			'id',
-			'username',
-			'display_name',
-			'gender',
-			'title',
-			'signature',
-			'avatar',
-			'last_login'
+		'id',
+		'avatar',
+		'display_name',
+		'gender',
+		'last_login',
+		'signature',
+		'title',
+		'username',
 	];
 
 }

@@ -4,7 +4,7 @@
 
 			<div class="col-sm-3">
 
-				<aside ng-if="!viewer" id="login" class="pane pane-default">
+				<aside ng-if="!authenticated" id="login" class="pane pane-default">
 					<header class="pane-heading">
 
 						<h3 class="pane-title">Login</h3>
@@ -12,6 +12,10 @@
 					</header>
 					<div class="pane-body" ng-include="'assets/templates/login.html'" ng-controller="LoginController"></div>
 				</aside>
+
+				<p ng-if="authenticated">
+
+				</p>
 
 			</div>
 
