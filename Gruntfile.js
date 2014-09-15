@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-manifest');
+	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.initConfig({
@@ -25,13 +26,20 @@ module.exports = function(grunt) {
 				src: [
 						'bower_components/lodash/dist/lodash.js',
 						'bower_components/jquery/dist/jquery.js',
+//						'bower_components/requirejs/require.js',
+
+						// Angular
 						'bower_components/angular/angular.js',
 						'bower_components/ng-resource/angular-resource.js',
 						'bower_components/ng-route/angular-route.js',
 						'bower_components/ng-sanitize/angular-sanitize.js',
 						'bower_components/ng-storage/ngStorage.js',
 						'bower_components/ui-router/release/angular-ui-router.js',
-						'app/assets/js/vendor/ui-bootstrap-tpls-0.11.0.js'
+						'app/assets/js/vendor/ui-bootstrap-tpls-0.11.0.js',
+
+						// Famo.us
+						'bower_components/famous/famous-global.js',
+						'bower_components/famous-angular/dist/famous-angular.js'
 //					'app/assets/js/vendor/jquery.markitup.js',
 //					'app/assets/js/vendor/markitup.bbcode.js',
 //					'app/assets/js/vendor/jquery.cookie.js'
@@ -85,6 +93,16 @@ module.exports = function(grunt) {
 					}
 				]
 			},
+			css: {
+				files: [
+					{
+						expand:  true,
+						flatten: true,
+						src:     [ 'bower_components/famous-angular/dist/famous-angular.min.css' ],
+						dest:    'public/assets/css/'
+					}
+				]
+			},
 			deploy: {
 				files: [
 					{
@@ -92,6 +110,16 @@ module.exports = function(grunt) {
 						cwd:    'build',
 						src:    [ '**/*' ],
 						dest:   '../8.klubitus.org'
+					}
+				]
+			},
+			js: {
+				files: [
+					{
+						expand:  true,
+						flatten: true,
+						src:     [ 'bower_components/famous/famous-global.min.js' ],
+						dest:    'public/assets/js/'
 					}
 				]
 			}
@@ -114,7 +142,7 @@ module.exports = function(grunt) {
 		},
 
 		jshint: {
-			anqh: [ 'app/assets/js/*.js' ]
+			klubitus: [ 'app/assets/js/*.js' ]
 		},
 
 		less: {
@@ -122,7 +150,7 @@ module.exports = function(grunt) {
 				cleancss: true,
 				report:   'min'
 			},
-			anqh: {
+			klubitus: {
 				files: { 'public/assets/css/klubitus.css': 'app/assets/less/klubitus.less' }
 			}
 		},
@@ -151,7 +179,7 @@ module.exports = function(grunt) {
 			vendor: {
 				files: { 'public/assets/js/vendor.min.js': 'public/assets/js/vendor.js' }
 			},
-			anqh: {
+			klubitus: {
 				files: { 'public/assets/js/klubitus.min.js': 'public/assets/js/klubitus.js' }
 			}
 		},
@@ -161,16 +189,19 @@ module.exports = function(grunt) {
 				files: [ 'app/assets/less/*.less' ],
 				tasks: [ 'less' ]
 			},
+			grunt: {
+				files: [ 'Gruntfile.js' ]
+			},
 			js: {
-				files: [ '<%= concat.vendor.src %>', '<%= concat.klubitus.src %>' ],
+				files: [ '<%= concat.klubitus.src %>' ],
 				tasks: [ 'js' ]
 			}
 		}
 
 	});
 
-	grunt.registerTask('js', [ 'concat', 'uglify' ]);
-	grunt.registerTask('css', [ 'less' ]);
+	grunt.registerTask('js', [ 'newer:concat', 'newer:uglify' ]);
+	grunt.registerTask('css', [ 'copy:css', 'less' ]);
 	grunt.registerTask('prebuild', [ 'clean', 'css', 'js' ]);
 	grunt.registerTask('postbuild', [ 'manifest', 'imagemin' ]);
 	grunt.registerTask('build', [ 'prebuild', 'copy:build', 'postbuild' ]);
