@@ -1,11 +1,12 @@
 var klubitusApp = angular
 		.module('klubitusApp', [
-			'ngResource',
-			'ngRoute',
-			'ngSanitize',
-			'ngStorage',
-			'ui.bootstrap',
-			'ui.router'
+				'famous.angular',
+				'ngResource',
+				'ngRoute',
+				'ngSanitize',
+				'ngStorage',
+				'ui.bootstrap',
+				'ui.router'
 		])
 
 		// Routes
