@@ -1,11 +1,13 @@
 <?php
+use \Illuminate\Database\Eloquent\Collection;
 
-class NewsfeedItemCollection extends \Illuminate\Database\Eloquent\Collection {
+
+class NewsfeedItemCollection extends Collection {
 
 	/**
 	 * Aggregated collection.
 	 *
-	 * @return  \Illuminate\Support\Collection
+	 * @return  Collection
 	 */
 	public function aggregated() {
 
@@ -15,7 +17,8 @@ class NewsfeedItemCollection extends \Illuminate\Database\Eloquent\Collection {
 			$config = array_get(NewsfeedItem::config(), $path);
 
 			if ($config && isset($config['text_aggregated'])) {
-				return implode('.', [ $path, $model->user_id, date('Ymd', $model->created_at->timestamp) ]);
+				//return implode('.', [ $path, $model->user_id, date('Ymd', $model->created_at->timestamp) ]);
+				return implode('.', [ $path, $model->user_id, date('Ymd', $model->stamp->timestamp) ]);
 			} else {
 				return $key;
 			}

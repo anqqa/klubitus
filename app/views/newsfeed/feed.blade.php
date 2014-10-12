@@ -16,7 +16,7 @@
 				</div>
 				-->
 				<div class="media-body">
-					<small class="text-muted pull-right" title="{{ date('j.n.Y', $item->created_at->timestamp) }}">{{ date('H:i', $item->created_at->timestamp) }}</small>
+					<small class="text-muted pull-right" title="{{ date('j.n.Y', $item->stamp->timestamp) }}">{{ date('H:i', $item->stamp->timestamp) }}</small>
 					{{ HTML::user($item->user_id) }}
 					{{ $item->text }}
 				</div>

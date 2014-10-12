@@ -1,10 +1,23 @@
 <?php
+use \Illuminate\Database\Eloquent\Builder;
+
 
 abstract class Entity extends Eloquent {
-	protected $guarded = array('id', 'created_at', 'modified_at');
+
+	/* @TODO: Remove after release */
+	const CREATED_AT = 'created';
+	const UPDATED_AT = 'modified';
+
+	protected $guarded = [ 'id', 'created', 'created_at', 'modified', 'updated_at' ];
 
 	/** @var  string  Column for latest scope */
 	protected $latestColumn = 'id';
+
+
+	/* TODO: Remove after release */
+	public function getDateFormat() {
+		return 'U';
+	}
 
 
 	/**
@@ -20,10 +33,11 @@ abstract class Entity extends Eloquent {
 	/**
 	 * Scope: latest.
 	 *
-	 * @param   \Illuminate\Database\Eloquent\Builder  $query
-	 * @return  \Illuminate\Database\Eloquent\Builder
+	 * @param   Builder  $query
+	 * @return  Builder
+	 * @deprecated
 	 */
-	public function scopeLatest(\Illuminate\Database\Eloquent\Builder $query) {
+	public function scopeLatest(Builder $query) {
 		return $query->orderBy($this->latestColumn, 'DESC');
 	}
 

@@ -1,6 +1,13 @@
 <?php
+use \Illuminate\Database\Eloquent\Collection;
+
+
 class NewsfeedItem extends Entity {
+	const CREATED_AT = 'stamp';
+
 	protected $table = 'newsfeeditems';
+	protected $visible = [ 'id', 'user_id', 'stamp', 'class', 'type', 'target_id', 'data', 'user' ];
+	protected $appends = [ 'text' ];
 
 	public $aggregated = false;
 
@@ -29,7 +36,7 @@ class NewsfeedItem extends Entity {
 	 */
 	public static function config() {
 		if (!static::$config) {
-			static::$config = Config::get('newsfeed.items');
+			static::$config = \Config::get('newsfeed.items');
 		}
 
 		return static::$config;
@@ -122,7 +129,7 @@ class NewsfeedItem extends Entity {
 	 * Eloquent Collection with aggregated item support.
 	 *
 	 * @param   array   $models
-	 * @return  \Illuminate\Database\Eloquent\Collection|NewsfeedItemCollection
+	 * @return  Collection|NewsfeedItemCollection
 	 */
 	public function newCollection(array $models = array()) {
 		return new NewsfeedItemCollection($models);
@@ -141,8 +148,6 @@ class NewsfeedItem extends Entity {
 
 	/**
 	 * Target model for non-aggregated items.
-	 *
-	 * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo|null
 	 */
 	public function target() {
 		$path   = $this->class . '.' . $this->type;
@@ -150,6 +155,11 @@ class NewsfeedItem extends Entity {
 		$model  = array_get($config, 'target_model');
 
 		return ($this->aggregated || !$model) ? null : $this->belongsTo($model, 'target_id');
+	}
+
+
+	public function user() {
+		return $this->belongsTo('UserLight', 'user_id');
 	}
 
 }

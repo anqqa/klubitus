@@ -1,7 +1,11 @@
 <?php
-/**
- * Shout model.
- */
 class Shout extends Entity {
 	protected $table   = 'shouts';
+	protected $visible = [ 'id', 'author_id', 'created', 'shout', 'user' ];
+
+
+	public function user() {
+		return $this->belongsTo('UserLight', 'author_id');
+	}
+
 }
