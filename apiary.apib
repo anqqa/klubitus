@@ -1,0 +1,46 @@
+FORMAT: 1A
+
+# klubitus
+Klubitus API - *Work in progress!*
+
+# Group Events
+Event related resources.
+
+## Events Collection [/events]
+### List all Events [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "title": "Jogging in park"
+        }, {
+          "id": 2, "title": "Pick-up posters from post-office"
+        }]
+
+### Create an Event [POST]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Event [/event/{id}]
+A single Event object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Event to perform action with. Has example value.
+
+### Retrieve an Event [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove an Event [DELETE]
++ Response 204
