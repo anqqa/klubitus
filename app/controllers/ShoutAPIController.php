@@ -18,8 +18,6 @@ class ShoutAPIController extends BaseAPIController {
 
 	/**
 	 * API: Latest shouts.
-	 *
-	 * @return  \Illuminate\Database\Eloquent\Collection
 	 */
 	public function index() {
 		return $this->shouts->getLatest(min(100, abs((int)\Input::get('limit', 100))), 'id', 'user');

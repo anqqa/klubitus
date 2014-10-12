@@ -17,7 +17,7 @@ class ShoutController extends BaseController {
 	 * @return  string|\Illuminate\Http\RedirectResponse
 	 */
 	public function postShout() {
-		$this->api->post('shout', [ 'shout' => Input::get('shout') ]);
+		$this->api->post('shouts', [ 'shout' => Input::get('shout') ]);
 
 		if (Request::ajax()) {
 			return $this->viewShouts(Input::get('limit', 10));
