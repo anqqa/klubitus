@@ -17,21 +17,7 @@ class ShoutController extends BaseController {
 	 * @return  string|\Illuminate\Http\RedirectResponse
 	 */
 	public function postShout() {
-		if (Auth::check()) {
-			$form = new BaseForm();
-
-			if ($form->isValid([
-				'shout' => 'required',
-			])) {
-
-				// Shout it
-				Shout::create([
-					'shout'     => Input::get('shout'),
-					'author_id' => Auth::user()->id
-				]);
-
-			}
-		}
+		$this->api->post('shout', [ 'shout' => Input::get('shout') ]);
 
 		if (Request::ajax()) {
 			return $this->viewShouts(Input::get('limit', 10));

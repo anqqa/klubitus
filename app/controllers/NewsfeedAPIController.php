@@ -1,5 +1,5 @@
 <?php
-class APINewsfeedController extends APIBaseController {
+class NewsfeedAPIController extends BaseAPIController {
 
 	/** @var  NewsfeedRepository */
 	protected $newsfeed;

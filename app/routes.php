@@ -13,8 +13,10 @@
 
 // API
 Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
-			Route::resource('newsfeed', 'APINewsfeedController', [ 'only' => [ 'index' ]]);
-			Route::resource('shouts', 'APIShoutController', [ 'only' => [ 'index', 'store' ]]);
+			Route::resource('newsfeed', 'NewsfeedAPIController', [ 'only' => [ 'index' ]]);
+
+			Route::resource('shout', 'ShoutAPIController', [ 'only' => [ 'store' ]]);
+			Route::resource('shouts', 'ShoutAPIController', [ 'only' => [ 'index' ]]);
 		});
 
 
