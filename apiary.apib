@@ -3,6 +3,7 @@ FORMAT: 1A
 # klubitus
 Klubitus API - *Work in progress!*
 
+
 # Group Events
 Event related resources.
 
@@ -44,3 +45,19 @@ A single Event object with all its details
 
 ### Remove an Event [DELETE]
 + Response 204
+
+
+# Group Shouts
+Shout related resources.
+
+## Shouts Collection [/shouts]
+### List latest Shouts [GET]
++ Parametersg
+  + limit (optional, number) ... Number of Shouts to fetch, defaults to `100`. 
+
+### Create a Shout [POST]
++ Request (application/json)
+
+        { "shout": "Hello world!" }
+  
++ Response 200
