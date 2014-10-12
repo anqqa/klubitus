@@ -12,9 +12,9 @@
 */
 
 // API
-Route::group([ 'prefix' => '/api/v2' ], function() {
-			Route::resource('newsfeed', '\\Klubitus\\API\\NewsfeedController', [ 'only' => [ 'index' ]]);
-			Route::resource('shouts', '\\Klubitus\\API\\ShoutController', [ 'only' => [ 'index', 'store' ]]);
+Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
+			Route::resource('newsfeed', 'APINewsfeedController', [ 'only' => [ 'index' ]]);
+			Route::resource('shouts', 'APIShoutController', [ 'only' => [ 'index', 'store' ]]);
 		});
 
 

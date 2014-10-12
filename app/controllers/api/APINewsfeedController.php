@@ -1,11 +1,5 @@
 <?php
-namespace Klubitus\API;
-
-use Klubitus\Models\NewsfeedItem;
-use Klubitus\Models\NewsfeedRepository;
-
-
-class NewsfeedController extends BaseController {
+class APINewsfeedController extends APIBaseController {
 
 	/** @var  NewsfeedRepository */
 	protected $newsfeed;

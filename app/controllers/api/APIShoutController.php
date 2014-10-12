@@ -1,8 +1,26 @@
 <?php
-namespace Klubitus\API;
+class APIShoutController extends APIBaseController {
+
+	/** @var  ShoutRepository */
+	protected $shouts;
 
 
-class ShoutController extends BaseController {
+	/**
+	 * @param  ShoutRepository  $shouts
+	 */
+	public function __construct(ShoutRepository $shouts) {
+		$this->shouts = $shouts;
+	}
+
+
+	/**
+	 * API: Latest shouts.
+	 *
+	 * @return  \Illuminate\Database\Eloquent\Collection
+	 */
+	public function index() {
+		return $this->shouts->getLatest(min(100, abs((int)\Input::get('limit', 100))), 'id', 'user');
+	}
 
 	/**
 	 * Index.

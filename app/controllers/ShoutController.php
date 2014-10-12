@@ -48,10 +48,12 @@ class ShoutController extends BaseController {
 	 * @return  string
 	 */
 	public function viewShouts($limit = 10) {
+		$shouts = $this->api->get('shouts', [ 'limit' => $limit]);
+
 		return View::make('home.shouts', array(
 			'id'     => 'shouts',
 			'title'  => 'Shouts',
-			'shouts' => Shout::latest()->take(min(100, $limit))->get(),
+			'shouts' => $shouts,
 			'limit'  => $limit,
 		))->render();
 	}
