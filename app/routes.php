@@ -11,6 +11,13 @@
 |
 */
 
+// API
+Route::group([ 'prefix' => '/api/v2' ], function() {
+			Route::resource('newsfeed', '\\Klubitus\\API\\NewsfeedController', [ 'only' => [ 'index' ]]);
+			Route::resource('shouts', '\\Klubitus\\API\\ShoutController', [ 'only' => [ 'index', 'store' ]]);
+		});
+
+
 // Globals
 Route::pattern('year', '[\d]{4}');
 Route::pattern('month', '[01]?\d');
