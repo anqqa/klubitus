@@ -15,7 +15,8 @@
 Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
 			Route::resource('newsfeed', 'NewsfeedAPIController', [ 'only' => [ 'index' ]]);
 
-			Route::resource('shouts', 'ShoutAPIController', [ 'only' => [ 'index', 'store' ]]);
+			Route::resource('shout', 'ShoutAPIController', [ 'only' => [ 'store' ]]);
+			Route::resource('shouts', 'ShoutAPIController', [ 'only' => [ 'index' ]]);
 		});
 
 

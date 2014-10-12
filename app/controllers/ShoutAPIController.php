@@ -29,7 +29,7 @@ class ShoutAPIController extends BaseAPIController {
 	 */
 	public function store() {
 		if (!Auth::check()) {
-			throw new AccessDeniedHttpException;
+			throw new AccessDeniedHttpException('Must be authenticated.');
 		}
 
 		// Validate
@@ -42,7 +42,7 @@ class ShoutAPIController extends BaseAPIController {
 		$validator = Validator::make($payload, $rules);
 
 		if ($validator->fails()) {
-			throw new StoreResourceFailedException('Could not save shout', $validator->errors());
+			throw new StoreResourceFailedException('Could not save shout.', $validator->errors());
 		}
 
 		// Shout it
