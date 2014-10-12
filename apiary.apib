@@ -1,10 +1,10 @@
 FORMAT: 1A
 
 # klubitus
-Klubitus API - *Work in progress!*
+Klubitus API version 2.0 - *Work in progress!*
 
 
-# Group Events
+# Group Events (NOT IMPLEMENTED)
 Event related resources.
 
 ## Events Collection [/events]
@@ -27,7 +27,7 @@ Event related resources.
         { "id": 3, "title": "Buy cheese and bread for breakfast." }
 
 ## Event [/event/{id}]
-A single Event object with all its details
+A single Event object with all its details.
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Event to perform action with. Has example value.
@@ -50,14 +50,30 @@ A single Event object with all its details
 # Group Shouts
 Shout related resources.
 
-## Shouts Collection [/shouts]
+## Shouts Collection [/shouts{?limit}]
 ### List latest Shouts [GET]
-+ Parametersg
++ Parameters
   + limit (optional, number) ... Number of Shouts to fetch, defaults to `100`. 
 
++ Response 200 (application/json)
+
+## Shout [/shout]
 ### Create a Shout [POST]
 + Request (application/json)
 
         { "shout": "Hello world!" }
   
 + Response 200
+
++ Response 403 (application/json)
+
+        { "message": "Must be authenticated." }
+
++ Response 422 (application/json)
+
+        {
+            "message": "Could not save shout.",
+            "errors: [
+                "shout": "shout is required"
+            ]
+        }
