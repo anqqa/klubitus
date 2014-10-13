@@ -50,7 +50,9 @@ div.loading                            { .ajax; position: absolute; right: 5px; 
 .female                                { color: @brand-lovely; }
 .user:hover                            { color: @link-hover-color; }
 a.friend                               { text-decoration: underline; }
-.avatar                                { display: inline-block; .square(50px); text-align: center;
+a.avatar,
+div.avatar,
+span.avatar                            { display: inline-block; .square(50px); text-align: center;
 //  &.small                              { .square(25px); }
   &.dummy                              { background: @gray-lighter; .img-circle; line-height: 50px; .text-muted; }
   img                                  { .img-circle; max-height: 100%; max-width: 100%; }
@@ -104,11 +106,10 @@ body                                   { border-top: 2px solid @gray-darker; }
 // Main menu
 // --------------------------------------------------
 #mainmenu                              { background: transparent; border: 0 none;
-  .mainmenu                            { text-transform: uppercase;
-    > .active > a                      { background: none; color: @gray-darker; position: relative; }
-    > .active > a:after                { border: 4px solid transparent; border-top-color: @gray-darker; content: ''; left: 50%; margin-left: -4px; position: absolute; .square(0); top: 0; }
-  }
-  .navbar-right                        { margin-right: 0; }
+  .navbar-brand,
+  li[role=menuitem]                    { text-transform: uppercase; }
+  .navbar-brand + .navbar-brand        { text-transform: lowercase; }
+  .dropdown li[role=menuitem]          { text-transform: none; }
   #search                              {
     .loader                            { display: none; position: absolute; right: @navbar-padding-horizontal * 2; top: 10px; }
     .loading .loader                   { display: inline-block; }
@@ -121,7 +122,16 @@ body                                   { border-top: 2px solid @gray-darker; }
     label[for=field-password] a        { float: right; }
   }
   #notifications .popover-content      { min-width: 250px; }
-  .avatar                              { .square(25px); }
+  li.avatar                            { padding-top: 7px; }
+  a.avatar                             { padding: 0; .square(25px); }
+
+  @media (min-width: @grid-float-breakpoint) {
+    .mainmenu                          {
+      > .active > a                    { background: none; color: @gray-darker; position: relative; }
+      > .active > a:after              { border: 4px solid transparent; border-top-color: @gray-darker; content: ''; left: 50%; margin-left: -4px; position: absolute; .square(0); top: 0; }
+    }
+  }
+
 }
 
 
