@@ -147,6 +147,9 @@ module.exports = function(grunt) {
 				files: [ 'app/assets/less/*.less' ],
 				tasks: [ 'less' ]
 			},
+			grunt: {
+				files: [ 'Gruntfile.js' ]
+			},
 			js: {
 				files: [ '<%= concat.vendor.src %>', '<%= concat.klubitus.src %>' ],
 				tasks: [ 'js' ]
