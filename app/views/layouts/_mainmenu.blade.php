@@ -42,14 +42,14 @@
 			<li role="menuitem" class="{{ $id == 'galleries' ? 'active' : '' }}">
 				<a href="/">Galleries</a>
 			</li>
+			<li role="menuitem" class="{{ $id == 'venues' ? 'active' : '' }}">
+				<a href="/">Venues</a>
+			</li>
 			<li role="menuitem" class="{{ $id == 'music' ? 'active' : '' }}">
 				<a href="/">Music</a>
 			</li>
 			<li role="menuitem" class="{{ $id == 'blogs' ? 'active' : '' }}">
 				<a href="/">Blogs</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'venues' ? 'active' : '' }}">
-				<a href="/">Venues</a>
 			</li>
 			<li role="menuitem" class="{{ $id == 'members' ? 'active' : '' }}">
 				<a href="/">Members</a>
