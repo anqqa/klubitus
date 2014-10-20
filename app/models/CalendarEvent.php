@@ -8,8 +8,28 @@ use Illuminate\Database\Eloquent\Builder;
  * Event model.
  */
 class CalendarEvent extends Entity {
-	protected $table = 'events';
-	protected $dates = [ 'begins_at', 'ends_at' ];
+	protected $table   = 'events';
+	//protected $dates   = [ 'begins_at', 'ends_at' ];
+	protected $dates   = [ 'stamp_begin', 'stamp_end' ];
+	protected $visible = [
+		'id',
+		'age',
+		'city_name',
+		'dj',
+		'flyer',
+		'flyer_id',
+		'homepage',
+		'music',
+		'name',
+		'price',
+		'stamp_begin',
+		'stamp_end',
+		'start_date',
+		'tickets_url',
+		'venue',
+		'venue_name',
+		'venue_url',
+	];
 
 
 	/**
@@ -66,7 +86,7 @@ class CalendarEvent extends Entity {
 	 * @return  string
 	 */
 	public function getStartDateAttribute() {
-		$begins_at = $this->begins_at->toDateString();
+		$begins_at = $this->stamp_begin->toDateString();
 
 		if ($begins_at == date('Y-m-d')) {
 			return 'Today';
@@ -75,49 +95,8 @@ class CalendarEvent extends Entity {
 		} else if ($begins_at == date('Y-m-d', strtotime('yesterday'))) {
 			return 'Yesterday';
 		} else {
-			return $this->begins_at->formatLocalized('%A, %d %B %Y');
+			return $this->stamp_begin->formatLocalized('%A, %d %B %Y');
 		}
-	}
-
-
-	/**
-	 * Scope: day.
-	 *
-	 * @param   Builder         $query
-	 * @param   Carbon|integer  $day
-	 * @param   integer         $month
-	 * @param   integer         $year
-	 * @return  Builder
-	 */
-	public function scopeDay(Builder $query, $day = null, $month = null, $year = null) {
-		if ($day instanceof Carbon) {
-			$from = $day->startOfDay();
-		} else {
-			$from = Carbon::create($year, $month, $day, 0, 0, 0);
-		}
-		$to = $from->copy()->endOfDay();
-
-		return $this->scopeRange($query, $from, $to);
-	}
-
-
-	/**
-	 * Scope: month.
-	 *
-	 * @param   Builder         $query
-	 * @param   Carbon|integer  $month
-	 * @param   integer         $year
-	 * @return  Builder
-	 */
-	public function scopeMonth(Builder $query, $month = null, $year = null) {
-		if ($month instanceof Carbon) {
-			$from = $month->startOfMonth();
-		} else {
-			$from = Carbon::create($year, $month, 1, 0, 0, 0);
-		}
-		$to = $from->copy()->endOfMonth();
-
-		return $this->scopeRange($query, $from, $to);
 	}
 
 

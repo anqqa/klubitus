@@ -41,26 +41,54 @@ class EventController extends BaseController {
 
 		$this->layout->content = View::make('layouts._right_sidebar', array(
 			'content' => $this->viewEvents($date, $range),
-			'sidebar' => ''
+			'sidebar' => $this->viewCalendar($date)
 		));
+	}
+
+
+	/**
+	 * Sidebar calendar view.
+	 *
+	 * @param   Carbon  $date
+	 * @return  string
+	 */
+	protected function viewCalendar(Carbon $date) {
+		$calendar = new Calendar($date);
+
+		return View::make('events.calendar', array(
+					'calendar' => $calendar
+				))->render();
 	}
 
 
 	/**
 	 * Big events list view.
 	 *
+	 * @param   Carbon  $date
+	 * @param   string  $range
 	 * @return  string
 	 */
 	protected function viewEvents(Carbon $date, $range = 'week') {
 		switch ($range) {
-			case 'day':   $events = CalendarEvent::day($date); break;
-			case 'week':  $events = CalendarEvent::week($date); break;
-			case 'month': $events = CalendarEvent::month($date); break;
-			default:      return '';
+
+			case 'day':
+				$events = $this->api->get(sprintf('events/%d/%d/%d', $date->year, $date->month, $date->day));
+				break;
+
+			case 'week':
+				$events = $this->api->get(sprintf('events/%d/week/%d', $date->year, $date->weekOfYear));
+				break;
+
+			case 'month':
+				$events = $this->api->get(sprintf('events/%d/%d', $date->year, $date->month));
+				break;
+
+			default:
+				return '';
 		}
 
 		return View::make('events.index', array(
-			'events' => $events->get()
+			'events' => $events
 		))->render();
 	}
 

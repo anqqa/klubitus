@@ -11,8 +11,18 @@
 |
 */
 
+// Globals
+Route::pattern('year',  '[\d]{4}');
+Route::pattern('month', '[01]?\d');
+Route::pattern('day',   '[0-3]?\d');
+Route::pattern('week',  '[0-5]?\d');
+
 // API
 Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
+			Route::get('events/{year}/{month}/{day}', 'EventAPIController@getByDay');
+			Route::get('events/{year}/{month}',       'EventAPIController@getByMonth');
+			Route::get('events/{year}',               'EventAPIController@getByYear');
+
 			Route::resource('newsfeed', 'NewsfeedAPIController', [ 'only' => [ 'index' ]]);
 
 			Route::resource('shout', 'ShoutAPIController', [ 'only' => [ 'store' ]]);
@@ -20,11 +30,6 @@ Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
 		});
 
 
-// Globals
-Route::pattern('year', '[\d]{4}');
-Route::pattern('month', '[01]?\d');
-Route::pattern('day',  '[0-3]?\d');
-Route::pattern('week', '[0-5]?\d');
 
 // Home
 Route::get('/', 'HomeController@getIndex');
