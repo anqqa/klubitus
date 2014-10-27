@@ -1,4 +1,5 @@
 <?php
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -123,4 +124,5 @@ class CalendarEventRepository extends EloquentRepository {
 
 		return $this->getByRange($from, $from->copy()->endOfWeek());
 	}
+
 }

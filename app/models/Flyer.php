@@ -1,6 +1,16 @@
 <?php
 class Flyer extends Entity {
-	protected $table = 'flyers';
+	protected $table   = 'flyers';
+	protected $dates   = [ 'stamp_begin' ];
+	protected $visible = [
+			'id',
+			'event',
+			'event_id',
+			'image',
+			'image_id',
+			'stamp_begin',
+			'name',
+	];
 
 
 	/**

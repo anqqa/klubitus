@@ -69,18 +69,23 @@ class EventController extends BaseController {
 	 * @return  string
 	 */
 	protected function viewEvents(Carbon $date, $range = 'week') {
+		$relationships = 'flyer,friend_favorites,venue';
+
 		switch ($range) {
 
 			case 'day':
-				$events = $this->api->get(sprintf('events/%d/%d/%d', $date->year, $date->month, $date->day));
+				$events = $this->api->get(sprintf('events/%d/%d/%d?with=%s',
+								$date->year, $date->month, $date->day, $relationships));
 				break;
 
 			case 'week':
-				$events = $this->api->get(sprintf('events/%d/week/%d', $date->year, $date->weekOfYear));
+				$events = $this->api->get(sprintf('events/%d/week/%d?with=%s',
+								$date->year, $date->weekOfYear, $relationships));
 				break;
 
 			case 'month':
-				$events = $this->api->get(sprintf('events/%d/%d', $date->year, $date->month));
+				$events = $this->api->get(sprintf('events/%d/%d?with=%s',
+								$date->year, $date->month, $relationships));
 				break;
 
 			default:

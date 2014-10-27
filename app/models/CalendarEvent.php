@@ -16,6 +16,8 @@ class CalendarEvent extends Entity {
 		'age',
 		'city_name',
 		'dj',
+		'favorite_count',
+		'favorites',
 		'flyer',
 		'flyer_id',
 		'homepage',
@@ -32,31 +34,8 @@ class CalendarEvent extends Entity {
 	];
 
 
-	/**
-	 * Users who added this to favorites.
-	 *
-	 * @param   User   $onlyFriendsOf  Get only user's friends' favorites
-	 * @return  array  user ids
-	 */
-	public function favorites(User $onlyFriendsOf = null) {
-		$query = DB::table('favorites')
-			->where('favorites.event_id', '=', $this->id)
-			->select('favorites.user_id');
-
-		if ($onlyFriendsOf) {
-			$query
-				->join('friends', 'friends.friend_id', '=', 'favorites.user_id')
-				->where('friends.user_id', '=', $onlyFriendsOf->id);
-
-			/*
-			return $this->belongsToMany('User', 'favorites', 'event_id')
-				->join('friends', 'friends.friend_id', '=', 'users.id')
-				->where('friends.user_id', '=', $onlyFriendsOf->id);
-			*/
-		}
-
-		return $query->lists('favorites.user_id');
-
+	public function favorites() {
+		return $this->belongsToMany('User', 'favorites', 'event_id');
 	}
 
 
@@ -97,45 +76,6 @@ class CalendarEvent extends Entity {
 		} else {
 			return $this->stamp_begin->formatLocalized('%A, %d %B %Y');
 		}
-	}
-
-
-	/**
-	 * Scope: latest.
-	 *
-	 * @param   Builder  $query
-	 * @param   Carbon   $from
-	 * @param   Carbon   $to
-	 * @return  Builder
-	 */
-	public function scopeRange(Builder $query, Carbon $from, Carbon $to) {
-		return $query
-			->where('begins_at', '<=', $to)
-			->where('ends_at', '>=', $from->copy()->addHours(5)) // Only get after 5am
-			->orderBy(DB::raw("date_trunc('day', begins_at)"), 'ASC')
-			->orderBy('city_name', 'ASC');
-	}
-
-
-	/**
-	 * Scope: week.
-	 *
-	 * @param   Builder         $query
-	 * @param   Carbon|integer  $week
-	 * @param   integer         $year
-	 * @return  Builder
-	 */
-	public function scopeWeek(Builder $query, $week = null, $year = null) {
-		if ($week instanceof Carbon) {
-			$from = $week->startOfWeek();
-		} else {
-			$from = Carbon::create($year, 1, 1, 0, 0, 0)
-				->addWeeks(($week ?: date('W')) - 1)
-				->startOfWeek();
-		}
-		$to = $from->copy()->endOfWeek();
-
-		return $this->scopeRange($query, $from, $to);
 	}
 
 
