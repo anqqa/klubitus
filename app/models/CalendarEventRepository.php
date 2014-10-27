@@ -17,9 +17,9 @@ class CalendarEventRepository extends EloquentRepository {
 	 *
 	 * E.g. set year and month as int or just month as Carbon to get by month.
 	 *
-	 * @param   Carbon|integer  $year
-	 * @param   Carbon|integer  $month
-	 * @param   Carbon|integer  $day
+	 * @param   Carbon|int  $year
+	 * @param   Carbon|int  $month
+	 * @param   Carbon|int  $day
 	 * @return  Collection
 	 *
 	 * @throws  Exception  On invalid parameters
@@ -76,7 +76,7 @@ class CalendarEventRepository extends EloquentRepository {
 
 
 	/**
-	 * Scope: latest.
+	 * Get events by date range.
 	 *
 	 * @param   Carbon   $from
 	 * @param   Carbon   $to
@@ -91,4 +91,36 @@ class CalendarEventRepository extends EloquentRepository {
 				->get();
 	}
 
+
+	/**
+	 * Get events by week.
+	 *
+	 * @param   Carbon|int  $year  Year or date
+	 * @param   int         $week
+	 * @return  Collection
+	 *
+	 * @throws  Exception  on missing parameters
+	 */
+	public function getByWeek($year, $week = null) {
+		if ($year instanceof Carbon) {
+			$from = $year->copy()->startOfWeek();
+		}
+		else if ($week) {
+			$from = Carbon::create($year, 1, 1)->startOfWeek();
+
+			// Is the first day of the year on a week of last year?
+			if ($from->weekOfYear != 1) {
+				$from->addWeek();
+			}
+
+			if ($week > 1) {
+				$from->addWeeks($week - 1);
+			}
+		}
+		else {
+			throw new Exception('Week missing');
+		}
+
+		return $this->getByRange($from, $from->copy()->endOfWeek());
+	}
 }

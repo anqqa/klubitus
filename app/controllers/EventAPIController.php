@@ -66,4 +66,21 @@ class EventAPIController extends BaseAPIController {
 		}
 	}
 
+
+	/**
+	 * API: Events by year.
+	 *
+	 * @return  Collection
+	 */
+	public function getByWeek() {
+		$year = (int)Route::input('year');
+		$week = (int)Route::input('week');
+
+		try {
+			return $this->events->getByWeek($year, $week);
+		} catch (Exception $e) {
+			throw new BadRequestHttpException($e->getMessage());
+		}
+	}
+
 }

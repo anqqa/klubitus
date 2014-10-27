@@ -21,6 +21,7 @@ Route::pattern('week',  '[0-5]?\d');
 Route::api([ 'version' => 'v2', 'prefix' => 'api' ], function() {
 			Route::get('events/{year}/{month}/{day}', 'EventAPIController@getByDay');
 			Route::get('events/{year}/{month}',       'EventAPIController@getByMonth');
+			Route::get('events/{year}/week/{week}',   'EventAPIController@getByWeek');
 			Route::get('events/{year}',               'EventAPIController@getByYear');
 
 			Route::resource('newsfeed', 'NewsfeedAPIController', [ 'only' => [ 'index' ]]);
