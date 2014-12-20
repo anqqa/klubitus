@@ -127,6 +127,14 @@ module.exports = function(grunt) {
 		shell: {
 			chown: {
 				command: 'sudo chgrp -R apache ../8.klubitus.org/app/storage/*'
+			},
+			gulp: {
+				command: 'gulp build',
+				options: {
+					execOptions: {
+						cwd: 'bower_components/semantic-ui'
+					}
+				}
 			}
 		},
 
@@ -144,8 +152,8 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				files: [ 'app/assets/less/*.less' ],
-				tasks: [ 'less' ]
+				files: [ 'app/assets/site/*/*.{overrides,variables}' ],
+				tasks: [ 'css' ]
 			},
 			grunt: {
 				files: [ 'Gruntfile.js' ]
@@ -159,7 +167,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('js', [ 'concat', 'uglify' ]);
-	grunt.registerTask('css', [ 'less' ]);
+	grunt.registerTask('css', [ 'shell:gulp' ]);
 	grunt.registerTask('prebuild', [ 'clean', 'css', 'js' ]);
 	grunt.registerTask('postbuild', [ 'manifest', 'imagemin' ]);
 	grunt.registerTask('build', [ 'prebuild', 'copy:build', 'postbuild' ]);
