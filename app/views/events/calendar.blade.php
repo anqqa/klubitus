@@ -28,7 +28,11 @@
 				<tr>
 					@foreach ($week as $day)
 					<td class="{{{ implode($day['classes']) }}}">
-						{{{ $day['date']->day }}}
+						{{ HTML::linkRoute('events', $day['date']->day, [
+							'year'  => $day['date']->year,
+							'month' => $day['date']->month,
+							'day'   => $day['date']->day,
+						]) }}
 					</td>
 					@endforeach
 				</tr>
