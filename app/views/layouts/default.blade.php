@@ -15,8 +15,11 @@
 	  ga('send', 'pageview');
 	</script>
 
-	@include('layouts._mainmenu')
+	<div id="body">
 
+		@include('layouts._mainmenu')
+
+		<div id="content">
 
 <!-- ADS -->
 
@@ -47,6 +50,10 @@
 
 	</div>
 </footer><!-- #footer -->
+
+		</div>
+
+	</div>
 
 @include('layouts._foot')
 

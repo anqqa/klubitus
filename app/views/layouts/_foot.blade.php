@@ -1,7 +1,7 @@
-{{ HTML::script('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places') }}
+<!--{{ HTML::script('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places') }}-->
 
 <script>
-	head.js(
+/*	head.js(
 		{ 'jquery':        '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' },
 		{ 'jquery-ui':     '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js' },
 		{ 'bootstrap':     '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js' },
@@ -36,5 +36,5 @@
 			}
 
 		}
-	);
+	);*/
 </script>

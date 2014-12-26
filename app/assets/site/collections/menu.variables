@@ -1,3 +1,18 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+/*--------------
+     States
+---------------*/
+
+@hoverBackground: @subtleTransparentWhite;
+@hoverColor: @lightTextColor;
+
+@pressedBackground: @subtleTransparentWhite;
+@pressedColor: @pressedTextColor;
+
+@activeBackground: @subtleTransparentWhite;
+@activeColor: @lightTextColor;
+
+@activeHoverBackground: @hoverBackground;

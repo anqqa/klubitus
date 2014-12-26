@@ -7,12 +7,13 @@
 
 	@yield('meta')
 
-	{{ HTML::style('assets/css/klubitus.css') }}
-	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css') }}
+	{{ HTML::style('assets/semantic.min.css') }}
+	{{ HTML::script('assets/semantic.min.js') }}
+<!--	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css') }}
 	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.min.css') }}
 	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2-bootstrap.css') }}
 
-	{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.load.js') }}
+	{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.load.js') }}-->
 
 	@yield('ads.head')
 

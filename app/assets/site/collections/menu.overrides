@@ -1,3 +1,28 @@
 /*******************************
          Site Overrides
 *******************************/
+
+/*---------------------
+   Secondary Pointing
+-----------------------*/
+
+/* Secondary Vertical Pointing */
+.ui.secondary.vertical.pointing.menu {
+  border-color: transparent;
+}
+
+/* Hover */
+.ui.secondary.vertical.pointing.menu > .item:hover {
+  color: @hoverColor;
+}
+
+/* Pressed */
+.ui.secondary.vertical.pointing.menu > .item:active {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Active */
+.ui.secondary.vertical.pointing.menu > .item.active {
+  border-color: @primaryColor;
+  color: @activeColor; //rgba(255, 255, 255, 0.85);
+}

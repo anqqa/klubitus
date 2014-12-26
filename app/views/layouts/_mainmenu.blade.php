@@ -1,84 +1,51 @@
 @section("mainmenu")
 
-<nav id="mainmenu" role="navigation" class="navbar navbar-default navbar-static-top">
-	<div class="container">
+<div id="mainmenu" role="menu">
 
-		<div class="navbar-header mainmenu">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainmenu [role=menubar]">
-				<i class="fa fa-bars"></i>
-			</button>
-			<a class="navbar-brand" href="/">klubitus</a>
-			@if ($id == 'events')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="{{ URL::route('events') }}">Events</a>
-			@elseif ($id == 'forum')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Forum</a>
-			@elseif ($id == 'galleries')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Galleries</a>
-			@elseif ($id == 'music')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Music</a>
-			@elseif ($id == 'blogs')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Blogs</a>
-			@elseif ($id == 'venues')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Venues</a>
-			@elseif ($id == 'members')
-			<span class="navbar-brand visible-xs">|</span>
-			<a class="navbar-brand visible-xs" href="/">Members</a>
-			@endif
+	@if (!$viewer)
+
+	<div class="ui basic segment">
+		{{ Form::open([ 'route' => 'session.store' ]) }}
+
+		<div class="ui fluid small form">
+
+			<div class="field">
+				<input name="username" type="text" placeholder="Username or email" autofocus>
+			</div>
+
+			<div class="field">
+				<input name="password" placeholder="Passphrase" type="password">
+			</div>
+
+			<div class="inline field">
+				<div class="ui checkbox">
+					<input id="login-remember" type="checkbox" name="remember" value="remember">
+					<label for="login-remember">Remember me</label>
+				</div>
+			</div>
+
+			{{ Form::button('Login', [ 'type' => 'submit', 'class' => 'tiny ui fluid primary submit button', 'title' => 'Remember to sign out if on a public computer!' ]) }}
+
 		</div>
 
-		<ul class="nav navbar-nav navbar-right collapse navbar-collapse mainmenu" role="menubar">
-			<li role="menuitem" class="{{ $id == 'events' ? 'active' : '' }}">
-				<a href="{{ URL::route('events') }}">Events</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'forum' ? 'active' : '' }}">
-				<a href="/">Forum</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'galleries' ? 'active' : '' }}">
-				<a href="/">Galleries</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'venues' ? 'active' : '' }}">
-				<a href="/">Venues</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'music' ? 'active' : '' }}">
-				<a href="/">Music</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'blogs' ? 'active' : '' }}">
-				<a href="/">Blogs</a>
-			</li>
-			<li role="menuitem" class="{{ $id == 'members' ? 'active' : '' }}">
-				<a href="/">Members</a>
-			</li>
+		{{ Form::close() }}
 
-			<!--
-			<li>
-				search
-			</li>
-			-->
+		<sub>
+			<a href="{{ URL::route('session.create') }}" class="text-muted">You don't remember you?</a>
+		</sub>
 
-			@if (!$viewer)
+		<hr>
 
-			<li>
-				<a href="{{ URL::route('register') }}" title="Did we mention it's FREE!">
-					<i class="fa fa-heart"></i> Sign up
-				</a>
-			</li>
+		<a class="tiny ui fluid facebook button" href="{{ URL::route('facebook-login') }}"title="Sign in with your Facebook account">
+			<i class="icon facebook"></i> Facebook
+		</a>
 
-			<li id="signin" class="dropdown">
-				<a href="{{ URL::route('session.create') }}" class="dropdown-toggle" data-toggle="dropdown">
-					<i class="fa fa-sign-in"></i> Login
-				</a>
-				<div class="dropdown-menu dropdown-menu-right">
-					@include('home._login', [ 'form' => null ])
-				</div>
-			</li>
+		<a class="tiny ui fluid pink button" href="{{ URL::route('register') }}" title="Did we mention it's FREE!">
+			<i class="icon heart"></i> Sign up
+		</a>
+	</div>
 
-			@else
+	@else
 
 			<li id="notifications"></li>
 
@@ -106,14 +73,33 @@
 
 			@endif
 
-			<!--
-			<li>
-				theme
-			</li>
-			-->
-		</ul>
+	<nav role="navigation" class="ui secondary fluid vertical pointing menu">
+		<a role="menuitem" class="item" href="/">
+			klubitus
+		</a>
+		<a role="menuitem" class="item{{ $id == 'events' ? ' active' : '' }}" href="{{ URL::route('events') }}">
+			Events
+		</a>
+		<a role="menuitem" class="item{{ $id == 'forum' ? ' active' : '' }}" href="/">
+			Forum
+		</a>
+		<a role="menuitem" class="item{{ $id == 'galleries' ? ' active' : '' }}" href="/">
+			Galleries
+		</a>
+		<a role="menuitem" class="item{{ $id == 'venues' ? ' active' : '' }}" href="/">
+			Venues
+		</a>
+		<a role="menuitem" class="item{{ $id == 'music' ? ' active' : '' }}" href="/">
+			Music
+		</a>
+		<a role="menuitem" class="item{{ $id == 'blogs' ? ' active' : '' }}" href="/">
+			Blogs
+		</a>
+		<a role="menuitem" class="item{{ $id == 'members' ? ' active' : '' }}" href="/">
+			Members
+		</a>
+	</nav>
 
-	</div>
-</nav><!-- #mainmenu -->
+</div><!-- #mainmenu -->
 
 @show

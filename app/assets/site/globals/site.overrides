@@ -1,3 +1,31 @@
 /*******************************
          Site Overrides
 *******************************/
+
+#body {
+  min-height: 100%;
+  position: relative;
+
+  #mainmenu {
+    float: left;
+    width: @mainmenuWidth;
+  }
+  #mainmenu::after {
+    background-color: @mainmenuBackground;
+    bottom: 0;
+    content: "";
+    height: auto;
+    left: 0;
+    margin: inherit;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    width: inherit;
+    z-index: -1;
+  }
+
+  #content {
+    margin-left: @mainmenuWidth;
+    overflow: hidden;
+  }
+}
