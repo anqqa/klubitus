@@ -94,7 +94,7 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 
 	$placeholder = URL::asset('assets/img/avatar/unknown.png');
 	$lazy        = $lazy && !Request::ajax();
-	$class       = 'avatar ' . $class;
+	$class       = 'ui avatar image ' . $class;
 
 	// Gather missing data
 	if (is_numeric($avatar)) {
@@ -135,7 +135,7 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 
 		// Anonymous
 		return '<span class="' . $class . '">' . ($lazy
-			? HTML::image($placeholder, 'Avatar', [ 'class' => 'img-circle lazy', 'data-original' => $avatar ])
+			? HTML::image($placeholder, 'Avatar', [ 'class' => 'lazy', 'data-original' => $avatar ])
 			: HTML::image($avatar, 'Avatar', [ 'class' => 'img-circle' ])
 		) . '</span>';
 
@@ -146,8 +146,8 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 		$title = HTML::entities($username);
 
 		return '<a href="' . URL::route('user.profile', [ 'user' => Text::slug($username) ]) . '" class="' . $class . '">' . ($lazy
-			? HTML::image($placeholder, $title, [ 'title' => $title, 'class' => 'img-circle lazy', 'data-original' => $avatar ])
-			: HTML::image($avatar, $title, [ 'title' => $title, 'class' => 'img-circle' ])
+			? HTML::image($placeholder, $title, [ 'title' => $title, 'class' => 'lazy', 'data-original' => $avatar ])
+			: HTML::image($avatar, $title, [ 'title' => $title, 'class' => '' ])
 		) . '</a>';
 
 	}

@@ -2,31 +2,131 @@
          Site Overrides
 *******************************/
 
+/*--------------
+   Responsive
+---------------*/
+
+@media only screen and (max-width: (@largestMobileScreen)) {
+  .hide.mobile,
+  .tablet.only,
+  .computer.only {
+    display: none !important;
+  }
+  .mobile.only {
+    display: inherit !important;
+  }
+}
+
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: (@largestTabletScreen)) {
+  .hide.tablet,
+  .mobile.only,
+  .computer.only {
+    display: none !important;
+  }
+  .tablet.only {
+    display: inherit !important;
+  }
+}
+
+@media only screen and (min-width: (@computerBreakpoint)) {
+  .hide.computer,
+  .mobile.only,
+  .tablet.only {
+    display: none !important;
+  }
+  .computer.only {
+    display: inherit !important;
+  }
+}
+
+
+/*--------------
+     Text
+---------------*/
+
+.center.aligned.text {
+  text-align: center;
+}
+
+.left.aligned.text {
+  text-align: left;
+}
+
+.right.aligned.text {
+  text-align: right;
+}
+
+
+/*--------------
+     Body
+---------------*/
+
 #body {
   min-height: 100%;
   position: relative;
+}
 
-  #mainmenu {
-    float: left;
-    padding-top: 2em;
-    width: @mainmenuWidth;
-  }
-  #mainmenu::after {
-    background-color: @mainmenuBackground;
-    bottom: 0;
-    content: "";
-    height: auto;
-    left: 0;
-    margin: inherit;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    width: inherit;
-    z-index: -1;
+
+/*--------------
+    Main menu
+---------------*/
+
+#mainmenu {
+  float: left;
+  padding-top: 2em;
+  width: @mainmenuWidth;
+
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    width: @mainMobileWidth;
+
+    .button {
+      margin: 0;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .button > .icon {
+      position: static !important;
+    }
+    .menu .icon {
+      float: none;
+    }
+    .ad {
+      display: none;
+    }
   }
 
-  #content {
-    margin-left: @mainmenuWidth;
-    overflow: hidden;
+  @media only screen and (min-width: @tabletBreakpoint) {
+    .menu .icon {
+      display: none;
+    }
+  }
+
+}
+
+#mainmenu::after {
+  background-color: @mainmenuBackground;
+  bottom: 0;
+  content: "";
+  height: auto;
+  left: 0;
+  margin: inherit;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  width: inherit;
+  z-index: -1;
+}
+
+
+/*--------------
+     Content
+---------------*/
+
+#content {
+  margin-left: @mainmenuWidth;
+  overflow: hidden;
+
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    margin-left: @mainMobileWidth;
   }
 }

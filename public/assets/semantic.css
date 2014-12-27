@@ -24290,18 +24290,112 @@ a:hover {
          Site Overrides
 *******************************/
 
+/*--------------
+   Responsive
+---------------*/
+
+@media only screen and (max-width: 767px) {
+  .hide.mobile,
+  .tablet.only,
+  .computer.only {
+    display: none !important;
+  }
+
+  .mobile.only {
+    display: inherit !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .hide.tablet,
+  .mobile.only,
+  .computer.only {
+    display: none !important;
+  }
+
+  .tablet.only {
+    display: inherit !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hide.computer,
+  .mobile.only,
+  .tablet.only {
+    display: none !important;
+  }
+
+  .computer.only {
+    display: inherit !important;
+  }
+}
+
+/*--------------
+     Text
+---------------*/
+
+.center.aligned.text {
+  text-align: center;
+}
+
+.left.aligned.text {
+  text-align: left;
+}
+
+.right.aligned.text {
+  text-align: right;
+}
+
+/*--------------
+     Body
+---------------*/
+
 #body {
   min-height: 100%;
   position: relative;
 }
 
-#body #mainmenu {
+/*--------------
+    Main menu
+---------------*/
+
+#mainmenu {
   float: left;
   padding-top: 2em;
   width: 168px;
 }
 
-#body #mainmenu::after {
+@media only screen and (max-width: 767px) {
+  #mainmenu {
+    width: 63px;
+  }
+
+  #mainmenu .button {
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #mainmenu .button > .icon {
+    position: initial !important;
+  }
+
+  #mainmenu .menu .icon {
+    float: none;
+  }
+
+  #mainmenu .ad {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #mainmenu .menu .icon {
+    display: none;
+  }
+}
+
+#mainmenu::after {
   background-color: rgba(128, 128, 128, 0.06);
   bottom: 0;
   content: "";
@@ -24315,9 +24409,19 @@ a:hover {
   z-index: -1;
 }
 
-#body #content {
+/*--------------
+     Content
+---------------*/
+
+#content {
   margin-left: 168px;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  #content {
+    margin-left: 63px;
+  }
 }
 
 /*

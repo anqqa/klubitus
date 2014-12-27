@@ -53,3 +53,4 @@
 
 @mainmenuBackground: rgba(128, 128, 128, 0.06);
 @mainmenuWidth:      140px + 2 * @emSize;
+@mainMobileWidth:    2.5 * @emSize + 2 * @emSize;
