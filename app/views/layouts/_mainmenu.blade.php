@@ -47,58 +47,64 @@
 
 	@else
 
-			<li id="notifications"></li>
+	<div class="ui center aligned basic segment">
 
-			<li class="hidden-xs avatar">
-				{{ HTML::avatar() }}
-			</li>
+		{{ HTML::avatar() }}
+		<br>
+		<div class="ui inline left pointing dropdown">
+			<div class="text">{{ $viewer->username }}</div>
+			<i class="dropdown icon"></i>
+			<div class="menu" role="menu">
+				<a class="item" role="menuitem" href="{{ URL::route('user.profile', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-user"></i> Profile</a>
+				<a class="item" role="menuitem" href="{{ URL::route('forum.messages') }}"><i class="fa fa-fw fa-envelope"></i> Private messages</a>
+				<a class="item" role="menuitem" href="{{ URL::route('user.favorites', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-heart"></i> Favorites</a>
+				<a class="item" role="menuitem" href="{{ URL::route('user.friends', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-group"></i> Friends</a>
+				<a class="item" role="menuitem" href="{{ URL::route('user.ignores', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-ban"></i> Ignores</a>
+				<a class="item" role="menuitem" href="{{ URL::route('user.settings', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-cog"></i> Settings</a>
+				<a class="item" role="menuitem" href="{{ URL::route('session.destroy') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+			</div>
+		</div>
 
-			<li id="visitor" class="dropdown">
-				<a class="user dropdown-toggle" href="#menu-profile" data-toggle="dropdown">
-					<span class="hidden-sm">{{{ $viewer->username }}}</span>
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu pull-right" role="menu">
-					<li role="menuitem">
-						<a href="{{ URL::route('user.profile', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-user"></i> Profile</a>
-						<a href="{{ URL::route('forum.messages') }}"><i class="fa fa-fw fa-envelope"></i> Private messages</a>
-						<a href="{{ URL::route('user.favorites', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-heart"></i> Favorites</a>
-						<a href="{{ URL::route('user.friends', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-group"></i> Friends</a>
-						<a href="{{ URL::route('user.ignores', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-ban"></i> Ignores</a>
-						<a href="{{ URL::route('user.settings', [ 'user' => Text::slug($viewer->username) ]) }}"><i class="fa fa-fw fa-cog"></i> Settings</a>
-						<a href="{{ URL::route('session.destroy') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
-					</li>
-				</ul>
-			</li>
+	</div>
 
-			@endif
+	@endif
 
 	<nav role="navigation" class="ui secondary fluid vertical pointing menu">
 		<a role="menuitem" class="item" href="/">
+			<i class="home icon"></i>
 			klubitus
 		</a>
 		<a role="menuitem" class="item{{ $id == 'events' ? ' active' : '' }}" href="{{ URL::route('events') }}">
+			<i class="calendar icon"></i>
 			Events
 		</a>
 		<a role="menuitem" class="item{{ $id == 'forum' ? ' active' : '' }}" href="/">
+			<i class="discussions icon"></i>
 			Forum
 		</a>
 		<a role="menuitem" class="item{{ $id == 'galleries' ? ' active' : '' }}" href="/">
+			<i class="photo icon"></i>
 			Galleries
 		</a>
 		<a role="menuitem" class="item{{ $id == 'venues' ? ' active' : '' }}" href="/">
+			<i class="marker icon"></i>
 			Venues
 		</a>
 		<a role="menuitem" class="item{{ $id == 'music' ? ' active' : '' }}" href="/">
+			<i class="music icon"></i>
 			Music
 		</a>
 		<a role="menuitem" class="item{{ $id == 'blogs' ? ' active' : '' }}" href="/">
+			<i class="book icon"></i>
 			Blogs
 		</a>
 		<a role="menuitem" class="item{{ $id == 'members' ? ' active' : '' }}" href="/">
+			<i class="users icon"></i>
 			Members
 		</a>
 	</nav>
+
+	<div class="ui centered eboard test ad" data-text="140x350"></div>
 
 </div><!-- #mainmenu -->
 

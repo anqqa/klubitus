@@ -1,4 +1,4 @@
-@import 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin';
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin';
 
 /*
  * # Semantic UI
@@ -8031,11 +8031,11 @@ i.flag.zimbabwe:before {
 /* browsers require these rules separate */
 
 .ui.form ::-webkit-input-placeholder {
-  color: #c0c0c0;
+  color: #cdcdcd;
 }
 
 .ui.form ::-moz-placeholder {
-  color: #c0c0c0;
+  color: #cdcdcd;
 }
 
 .ui.form :focus::-webkit-input-placeholder {
@@ -24297,6 +24297,7 @@ a:hover {
 
 #body #mainmenu {
   float: left;
+  padding-top: 2em;
   width: 168px;
 }
 
@@ -29121,11 +29122,11 @@ a:hover {
 /* browsers require these rules separate */
 
 .ui.form ::-webkit-input-placeholder {
-  color: #c0c0c0;
+  color: #cdcdcd;
 }
 
 .ui.form ::-moz-placeholder {
-  color: #c0c0c0;
+  color: #cdcdcd;
 }
 
 .ui.form :focus::-webkit-input-placeholder {

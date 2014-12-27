@@ -1,25 +1,23 @@
 <div class="content {{ $class or '' }}">
-	<div class="container">
-		<div class="row">
+	<div class="ui stackable three column page grid">
 
-			<div class="col-sm-4">
+		<div class="column">
 
-				{{ $left or '' }}
-
-			</div>
-
-			<div class="col-sm-4">
-
-				{{ $center or '' }}
-
-			</div>
-
-			<div class="col-sm-4">
-
-				{{ $right or '' }}
-
-			</div>
+			{{ $left or '' }}
 
 		</div>
+
+		<div class="column">
+
+			{{ $center or '' }}
+
+		</div>
+
+		<div class="column">
+
+			{{ $right or '' }}
+
+		</div>
+
 	</div>
 </div>

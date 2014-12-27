@@ -8,6 +8,7 @@
 
   #mainmenu {
     float: left;
+    padding-top: 2em;
     width: @mainmenuWidth;
   }
   #mainmenu::after {

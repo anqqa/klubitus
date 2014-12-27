@@ -6,7 +6,7 @@
        Fonts
 --------------------*/
 
-@googleProtocol    : 'http://';
+@googleProtocol    : 'https://';
 
 
 /*-------------------

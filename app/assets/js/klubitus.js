@@ -7,6 +7,15 @@
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
 
+// Initialize
+$(function() {
+
+	// Dropdowns
+	$('.ui.dropdown').dropdown();
+
+});
+
+/*
 // Ajax loader
 $.fn.loading = function(loaded) {
 	if (loaded) {
@@ -369,3 +378,4 @@ $(function() {
 	});
 
 });
+*/
