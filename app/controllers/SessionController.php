@@ -37,10 +37,11 @@ class SessionController extends BaseController {
 
 			// Attempt login
 			$username = Input::get('username');
+			$password = Input::get('password');
 			$field    = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 			if (Auth::attempt(array(
 				$field     => $username,
-				'password' => Input::get('password')
+				'password' => $password
 			), (bool)Input::get('remember'))) {
 
 				// Login successful

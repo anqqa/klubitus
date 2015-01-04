@@ -96,7 +96,7 @@ class EventAPIController extends BaseAPIController {
 		if (in_array('favorites', $with)) {
 			$events->load('favorites');
 		}
-		else if (in_array('friend_favorites', $with)) {
+		else if (in_array('friend_favorites', $with) && Auth::user()) {
 			$events->load([ 'favorites' => function($query) {
 						$query
 							->join('friends', 'friends.friend_id', '=', 'favorites.user_id')

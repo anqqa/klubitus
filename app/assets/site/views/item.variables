@@ -1,3 +1,19 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+/*-------------------
+       Content
+--------------------*/
+
+/* Header */
+@headerColor: #fafcfb; //@lightTextColor;
+
+/* Metadata */
+@metaFontSize: 0.8em;
+@metaLineHeight: 1.25em;
+@metaSpacing: 0.3em;
+@metaColor: @darkTextColor;
+
+/* Additional Content */
+@extraColor: @darkTextColor;
