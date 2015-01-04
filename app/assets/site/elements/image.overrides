@@ -1,3 +1,16 @@
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+     Avatar
+---------------*/
+
+.ui.avatar.images .image,
+.ui.avatar.images img,
+.ui.avatar.images svg,
+.ui.avatar.image img,
+.ui.avatar.image svg,
+.ui.avatar.image {
+  background: rgba(0, 0, 0, 0.05);
+}

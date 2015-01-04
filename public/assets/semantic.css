@@ -14250,6 +14250,19 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 
+/*--------------
+     Avatar
+---------------*/
+
+.ui.avatar.images .image,
+.ui.avatar.images img,
+.ui.avatar.images svg,
+.ui.avatar.image img,
+.ui.avatar.image svg,
+.ui.avatar.image {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 /*
  * # Semantic UI
  * https://github.com/Semantic-Org/Semantic-UI
@@ -24377,7 +24390,7 @@ a:hover {
   }
 
   #mainmenu .button > .icon {
-    position: initial !important;
+    position: static !important;
   }
 
   #mainmenu .menu .icon {
@@ -24390,6 +24403,10 @@ a:hover {
 }
 
 @media only screen and (min-width: 768px) {
+  #mainmenu .avatar {
+    font-size: 2em;
+  }
+
   #mainmenu .menu .icon {
     display: none;
   }

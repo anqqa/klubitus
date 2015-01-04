@@ -1,3 +1,13 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+/*-------------------
+       Types
+--------------------*/
+
+
+/* Avatar */
+@avatarSmallSize: 1em;
+@avatarMediumSize: @avatarSize;
+@avatarLargeSize: 5em;

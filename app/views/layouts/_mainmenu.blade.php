@@ -77,7 +77,7 @@
 
 	@endif
 
-	<nav role="navigation" class="ui large secondary fluid vertical pointing menu">
+	<nav role="navigation" class="ui secondary fluid vertical pointing menu">
 		<a role="menuitem" class="item" href="/">
 			<i class="home icon"></i>
 			<span class="text hide mobile">Home</span>
