@@ -1,44 +1,37 @@
-<aside id="calendar" class="pane pane-defult">
-	<header class="pane-heading">
+<aside id="calendar">
+	<table class="ui seven column table">
+		<thead>
+			<tr>
+				<th><a class="" href="{{{ $calendar->getPreviousLink() }}}"><i class="fa fa-chevron-left"></i></a></th>
+				<th class="center aligned" colspan="5">{{{ $calendar->getDate()->format('F Y') }}}</th>
+				<th class="right aligned"><a class="" href="{{{ $calendar->getNextLink() }}}"><i class="fa fa-chevron-right"></i></a></th>
+			</tr>
+		</thead>
 
-		<h3 class="pane-title">
-			<a href="{{{ $calendar->getPreviousLink() }}}"><i class="fa fa-chevron-left"></i></a>
-			{{{ $calendar->getDate()->format('F Y') }}}
-			<a href="{{{ $calendar->getNextLink() }}}"><i class="fa fa-chevron-right"></i></a>
-		</h3>
+		<tbody>
+			<tr>
+				<th class="center aligned">Mon</th>
+				<th class="center aligned">Tue</th>
+				<th class="center aligned">Wed</th>
+				<th class="center aligned">Thu</th>
+				<th class="center aligned">Fri</th>
+				<th class="center aligned">Sat</th>
+				<th class="center aligned">Sun</th>
+			</tr>
 
-	</header>
-	<div class="pane-body">
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Mon</th>
-					<th>Tue</th>
-					<th>Wed</th>
-					<th>Thu</th>
-					<th>Fri</th>
-					<th>Sat</th>
-					<th>Sun</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				@foreach ($calendar->getWeeks() as $week)
-				<tr>
-					@foreach ($week as $day)
-					<td class="{{{ implode($day['classes']) }}}">
-						{{ HTML::linkRoute('events', $day['date']->day, [
-							'year'  => $day['date']->year,
-							'month' => $day['date']->month,
-							'day'   => $day['date']->day,
-						]) }}
-					</td>
-					@endforeach
-				</tr>
+			@foreach ($calendar->getWeeks() as $week)
+			<tr>
+				@foreach ($week as $day)
+				<td class="center aligned {{{ implode($day['classes']) }}}">
+					{{ HTML::linkRoute('events', $day['date']->day, [
+						'year'  => $day['date']->year,
+						'month' => $day['date']->month,
+						'day'   => $day['date']->day,
+					]) }}
+				</td>
 				@endforeach
-			</tbody>
-		</table>
-
-	</div>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
 </aside>

@@ -86,7 +86,7 @@ class Calendar {
 					$classes[] = 'today active';
 				}
 				if ($date->month != $this->date->month) {
-					$classes[] = 'other';
+					$classes[] = 'disabled';
 				}
 
 				$weeks[$week][$day] = [

@@ -14,7 +14,7 @@
 --------------------*/
 
 @pageBackground      : #2C2C2C;
-@textColor           : rgb(128, 128, 128);
+@textColor           : rgb(127, 127, 127);
 
 
 /*-------------------
@@ -37,6 +37,7 @@
 @selectedTextColor           : @lightTextColor;
 @disabledTextColor           : fadeout(@textColor, 80);
 
+@headerColor                 : #fafcfb;
 /*
 @invertedTextColor           : rgba(255, 255, 255, 1);
 @invertedLightTextColor      : rgba(255, 255, 255, 0.8);
@@ -47,10 +48,21 @@
 @invertedDisabledTextColor   : rgba(255, 255, 255, 0.2);
 */
 
+
+/*-------------------
+      Borders
+--------------------*/
+
+@borderColor                   : rgba(127, 127, 127, 0.1);
+@solidBorderColor              : @borderColor;
+@solidSelectedBorderColor      : @borderColor;
+
+
+
 /*-------------------
         klubitus
 --------------------*/
 
-@mainmenuBackground: rgba(128, 128, 128, 0.06);
+@mainmenuBackground: rgba(127, 127, 127, 0.06);
 @mainmenuWidth:      140px + 2 * @emSize;
 @mainMobileWidth:    2.5 * @emSize + 2 * @emSize;

@@ -96,7 +96,7 @@
   }
 
   @media only screen and (min-width: @tabletBreakpoint) {
-    .avatar {
+    a.avatar {
       font-size: 2em;
     }
     .menu .icon {
