@@ -2,6 +2,6 @@
   "name": "klubitus",
   "dependencies": {
     "bootstrap": "~3.2.*",
-    "semantic-ui": "~1.3.*"
+    "semantic-ui": "~1.*"
   }
 }
