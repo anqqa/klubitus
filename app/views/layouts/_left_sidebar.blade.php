@@ -1,19 +1,17 @@
-<div class="content {{ $class or '' }}">
-	<div class="container">
-		<div class="row">
+<div class="{{ $class or '' }}">
+	<div class="ui stackable page grid">
 
-			<div class="col-sm-8">
+		<div class="four wide column">
 
-				{{ $sidebar or '' }}
-
-			</div>
-
-			<div class="col-sm-4">
-
-				{{ $content or '' }}
-
-			</div>
+		{{ $sidebar or '' }}
 
 		</div>
+
+		<div class="eight wide column">
+
+			{{ $content or '' }}
+
+		</div>
+
 	</div>
 </div>
