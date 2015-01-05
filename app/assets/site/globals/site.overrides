@@ -108,6 +108,7 @@
 
 #mainmenu::after {
   background-color: @mainmenuBackground;
+  border-right: 3px solid rgba(0, 0, 0, 0.15);
   bottom: 0;
   content: "";
   height: auto;

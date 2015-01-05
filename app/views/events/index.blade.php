@@ -7,7 +7,7 @@
 			@foreach ($events as $event)
 
 			@if (!isset($date) || $date != $event->start_date)
-				<span class="ui black ribbon label">
+				<span class="ui blue ribbon label">
 					{{ $date = $event->start_date }}
 				</span>
 			@endif
@@ -30,11 +30,11 @@
 							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
 						</span>
 						@elseif ($event->favorite_count >= 50)
-						<span class="ui right floated horizontal label">
+						<span class="ui right floated horizontal black label">
 							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
 						</span>
 						@elseif ($event->favorite_count > 1)
-						<span class="ui right floated tiny horizontal label">
+						<span class="ui right floated tiny horizontal black label">
 							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
 						</span>
 						@endif

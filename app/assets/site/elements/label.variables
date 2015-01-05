@@ -6,5 +6,5 @@
        Element
 --------------------*/
 
-@backgroundColor: @mainmenuBackground;
-@labelTextColor: @lightTextColor;
+//@backgroundColor: @mainmenuBackground;
+//@labelTextColor: @lightTextColor;

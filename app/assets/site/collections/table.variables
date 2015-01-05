@@ -8,7 +8,7 @@
 
 @background: none;
 @color: @textColor;
-@borderColor: rgba(127, 127, 127, 0.1);
+@borderColor: rgba(127, 127, 127, 0.15);
 
 
 /*--------------

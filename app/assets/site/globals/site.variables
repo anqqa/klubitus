@@ -6,15 +6,59 @@
        Fonts
 --------------------*/
 
-@googleProtocol    : 'https://';
+@googleProtocol    : '//';
 
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+/*---  Colors  ---*/
+@black            : #29292C;
+@blue             : #549DC5;
+@green            : #5BBD72;//
+@grey             : #BDBDBD;
+@orange           : #EE7757;
+@pink             : #D487BE;
+@purple           : #9B59B6;
+@red              : #D82845;
+@rose             : #C67C88;
+@teal             : #72B6AF;
+@yellow           : #F2C61F;//
+
+/*---  Light Colors  ---*/
+@lightBlack       : #2D2D30;
+@lightBlue        : #28B8D8;
+@lightGreen       : #2ECC40;//
+@lightOrange      : #FF851B;//
+@lightPink        : #FF8EDF;//
+@lightPurple      : #CDC6FF;//
+@lightRed         : #FF695E;//
+@lightTeal        : #6DFFFF;//
+@lightYellow      : #FFE21F;//
+
+/*---   Neutrals  ---*/
+@fullBlack        : #000000;//
+@darkGrey         : #AAAAAA;//
+@lightGrey        : #DCDDDE;//
+@offWhite         : #F7F7F7;
+@darkWhite        : #F0F0F0;//
+@white            : #FFFFFF;//
 
 /*-------------------
         Page
 --------------------*/
 
-@pageBackground      : #2C2C2C;
-@textColor           : rgb(127, 127, 127);
+@pageBackground      : @lightBlack;
+@textColor           : @lightGrey;
+
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor           : @blue;
+@linkHoverColor      : lighten(@linkColor, 5);
 
 
 /*-------------------
@@ -28,8 +72,8 @@
      Neutral Text
 --------------------*/
 
-@darkTextColor               : darken(@textColor, 5);
-@lightTextColor              : rgba(255, 255, 255, 0.75);
+@darkTextColor               : #838383;
+@lightTextColor              : #E3E3E3;
 
 @unselectedTextColor         : fadeout(@textColor, 50);
 @hoveredTextColor            : @lightTextColor;
@@ -37,7 +81,7 @@
 @selectedTextColor           : @lightTextColor;
 @disabledTextColor           : fadeout(@textColor, 80);
 
-@headerColor                 : #fafcfb;
+@headerColor                 : @lightTextColor;
 /*
 @invertedTextColor           : rgba(255, 255, 255, 1);
 @invertedLightTextColor      : rgba(255, 255, 255, 0.8);
@@ -53,7 +97,7 @@
       Borders
 --------------------*/
 
-@borderColor                   : rgba(127, 127, 127, 0.1);
+@borderColor                   : @black; //rgba(127, 127, 127, 0.1);
 @solidBorderColor              : @borderColor;
 @solidSelectedBorderColor      : @borderColor;
 
@@ -63,6 +107,6 @@
         klubitus
 --------------------*/
 
-@mainmenuBackground: rgba(127, 127, 127, 0.06);
+@mainmenuBackground: @black; //rgba(127, 127, 127, 0.06);
 @mainmenuWidth:      140px + 2 * @emSize;
 @mainMobileWidth:    2.5 * @emSize + 2 * @emSize;
