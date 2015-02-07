@@ -19,7 +19,7 @@
 					</div>
 				@else
 					<div class="ui tiny image placeholder">
-						<i class="bordered inverted disabled big calendar icon"></i>
+						<i class="bordered inverted disabled big icon">{{ strtoupper(substr($event->name, 0, 1)) }}</i>
 					</div>
 				@endif
 
