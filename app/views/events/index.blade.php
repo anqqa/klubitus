@@ -13,11 +13,15 @@
 			@endif
 
 			<div class="item">
-				<div class="ui tiny image">
-					@if ($flyer = $event->flyer)
-					{{ HTML::image($flyer->image->thumbUrl, 'Flyer') }}
-					@endif
-				</div>
+				@if ($flyer = $event->flyer)
+					<div class="ui tiny image">
+						{{ HTML::image($flyer->image->thumbUrl, 'Flyer') }}
+					</div>
+				@else
+					<div class="ui tiny image placeholder">
+						<i class="bordered inverted disabled big calendar icon"></i>
+					</div>
+				@endif
 
 				<div class="content">
 
@@ -25,47 +29,50 @@
 
 					<div class="meta">
 
-						@if ($event->favorite_count >= 100)
-						<span class="ui right floated big red horizontal label">
-							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
-						</span>
-						@elseif ($event->favorite_count >= 50)
-						<span class="ui right floated horizontal black label">
-							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
-						</span>
-						@elseif ($event->favorite_count > 1)
-						<span class="ui right floated tiny horizontal black label">
-							<a href="#">{{{ $event->favorite_count }}} <i class="like icon"></i></a>
-						</span>
-						@endif
-
 						@if ($event->venue_id)
-						{{ HTML::linkRoute('venue', $event->venue->name, [ $event->venue->slug ], [ 'class' => 'venue' ]) }}
+							{{ HTML::linkRoute('venue', $event->venue->name, [ $event->venue->slug ], [ 'class' => 'venue' ]) }}
 						@elseif ($event->venue_name)
-						<span class="venue">{{{ $event->venue_name }}}</span>
+							<span class="venue">{{{ $event->venue_name }}}</span>
 						@endif
 						<span class="city">{{{ $event->city_name }}}</span>
 
 					</div>
 
-					@if ($event->favorite_count && $viewer && $friends = $event->favorites->toArray())
-					<div class="description">
+					<div class="extra">
 
-						@if (count($friends) > ($max = 10) + 1)
-							@foreach (array_rand($friends, $max) as $key)
-							{{ HTML::avatar($friends[$key]) }}
-							@endforeach
-							<span class="ui avatar image">+{{ count($friends) - $max }}</span>
-						@else
-							@foreach ($friends as $userId)
-							{{ HTML::avatar($userId) }}
-							@endforeach
+						<span class="favorites">
+							@if ($event->favorite_count >= 100)
+								<span class="ui big red label">
+									<i class="like icon"></i>{{{ $event->favorite_count }}}
+								</span>
+							@elseif ($event->favorite_count >= 50)
+								<span class="ui black label">
+									<i class="like icon"></i>{{{ $event->favorite_count }}}
+								</span>
+							@elseif ($event->favorite_count > 1)
+								<span class="ui tiny black label">
+									<i class="like icon"></i>{{{ $event->favorite_count }}}
+								</span>
+							@endif
+						</span>
+
+						@if ($event->favorite_count && $viewer && $friends = $event->favorites->toArray())
+							<span class="friend favorites">
+								@if (count($friends) > ($max = 10) + 1)
+									@foreach (array_rand($friends, $max) as $key)
+									{{ HTML::avatar($friends[$key]) }}
+									@endforeach
+									<span class="ui avatar image">+{{ count($friends) - $max }}</span>
+								@else
+									@foreach ($friends as $userId)
+									{{ HTML::avatar($userId) }}
+									@endforeach
+								@endif
+							</span>
 						@endif
 
-					</div>
-					@endif
+						<br>
 
-					<div class="extra">
 						<small class="tags">{{{ $event->music }}}</small>
 					</div>
 

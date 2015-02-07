@@ -8607,6 +8607,20 @@ span.ui.avatar.image {
   text-align: center;
 }
 
+/*-------------------
+     Placeholders
+--------------------*/
+
+.ui.placeholder.image i.icon {
+  padding: 0 !important;
+  width: 100%;
+}
+
+.ui.tiny.placeholder.image i.icon {
+  height: 80px;
+  line-height: 80px;
+}
+
 /*
  * # Semantic UI
  * https://github.com/Semantic-Org/Semantic-UI
