@@ -1,0 +1,13 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+/*--------------
+  Content Image
+---------------*/
+
+.ui.items > .item span.avatar {
+  width: @avatarSize;
+  height: @avatarSize;
+  line-height: @avatarSize;
+}

@@ -1,0 +1,214 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@white:                      #fff;
+@gray-darkest:               lighten(#000, 10%); // #111;
+@gray-lighter:               lighten(#000, 90%); // #e6e6e6
+@black:                      #000;
+
+
+// Accent colors
+// -------------------------
+@brand-lovely:               #c3325f;
+@brand-special:              #7a43b6;
+
+
+// Scaffolding
+// -------------------------
+@body-bg:                    #f1f1f1;
+@link-color-alt:             @gray-darkest;
+@link-hover-color-alt:       @link-hover-color;
+@text-color:                 @gray-darker;
+@dark-body-bg:               #1a1a1a;
+@dark-text-color:            @gray-light;
+
+
+// Links
+// -------------------------
+@dark-link-color:            #6a6a6a;
+@dark-link-hover-color:      lighten(@dark-link-color, 15%);
+
+
+// Typography
+// -------------------------
+@import url(//fonts.googleapis.com/css?family=Roboto:900,100);
+
+@font-family-custom:         Roboto, @font-family-sans-serif;
+@font-weight-bold-custom:    900;
+@font-weight-light-custom:   100;
+
+@font-size-base:             12px;
+@font-size-large:            ceil((@font-size-base * 1.25)); // ~15px
+@font-size-small:            floor((@font-size-base * 0.85)); // ~10px
+@line-height-computed:       ceil((@font-size-base * @line-height-base)); // ~18px
+
+//@headings-font-family:       @font-family-custom;
+//@headings-font-weight:       @font-weight-light-custom;
+@dark-headings-color:        #c29d52;
+
+@text-color-me:              mix(@brand-warning, @text-color);
+@text-color-owner:           mix(@brand-success, @text-color);
+@text-color-admin:           @brand-info;
+
+
+// Tables
+// -------------------------
+@table-bg-hover:             rgba(0, 0, 0, .025);
+@table-bg-accent:            rgba(128, 128, 128, .05);
+@table-border-color:         rgba(128, 128, 128, .15);
+
+
+// Buttons
+// -------------------------
+@btn-lovely-color:           #fff;
+@btn-lovely-bg:              @brand-lovely;
+@btn-lovely-border:          darken(@btn-lovely-bg, 5%);
+
+@btn-special-color:          #fff;
+@btn-special-bg:             @brand-special;
+@btn-special-border:         darken(@btn-special-bg, 5%);
+
+
+// Forms
+// -------------------------
+@dark-input-bg:              #202020;
+@dark-input-border:          @gray-darkest;
+@dark-input-bg-disabled:     @gray-dark;
+@dark-input-color-placeholder: @gray;
+
+
+// Dropdowns
+// -------------------------
+@dark-dropdown-bg:           #161616;
+@dark-dropdown-border:       #1f1f1f;
+@dark-dropdown-divider-top:  @black;
+@dark-dropdown-divider-bottom: @gray-darker;
+
+@dark-dropdown-link-color:   @link-color;
+@dark-dropdown-link-active-color: @dropdown-link-color;
+
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+
+// Sprite icons path
+// -------------------------
+@icon-ajax-path:             '../img/ajax.gif';
+
+
+// Hr border color
+// -------------------------
+@dark-hr-border:             #6a6a6a;
+
+
+// Navs
+// -------------------------
+@navbar-height:              40px;
+@dark-nav-link-hover-bg:     rgba(128, 128, 128, .15);
+@dark-nav-tabs-border-color:                   rgba(128, 128, 128, .15);
+@dark-nav-tabs-link-hover-border-color:        @dark-nav-link-hover-bg;
+@dark-nav-tabs-active-link-hover-bg:           @dark-nav-link-hover-bg;
+@dark-nav-tabs-active-link-hover-color:        @gray;
+@dark-nav-tabs-active-link-hover-border-color: transparent;
+
+@nav-link-padding:           10px 10px;
+
+
+// Pagination
+// -------------------------
+@dark-pagination-color:           @link-color;
+@dark-pagination-bg:              @black;
+@dark-pagination-border:          @gray-darkest;
+
+@dark-pagination-hover-color:     @dark-link-hover-color;
+@dark-pagination-hover-bg:        @gray-dark;
+@dark-pagination-hover-border:    @gray-darkest;
+
+@dark-pagination-active-color:    #fff;
+@dark-pagination-active-bg:       @gray-dark;
+@dark-pagination-active-border:   @brand-primary;
+
+@dark-pagination-disabled-color:  @gray-dark;
+@dark-pagination-disabled-bg:     @gray-darkest;
+@dark-pagination-disabled-border: @gray-darkest;
+
+
+// Form states and alerts
+// -------------------------
+/*
+@dark-state-success-text:    #3c763d;
+@dark-state-success-bg:      #dff0d8;
+@dark-state-success-border:  darken(spin(@state-success-bg, -10), 5%);
+
+@dark-state-info-text:       #31708f;
+@dark-state-info-bg:         #d9edf7;
+@dark-state-info-border:     darken(spin(@state-info-bg, -10), 7%);
+
+@dark-state-warning-text:    #8a6d3b;
+@dark-state-warning-bg:      #fcf8e3;
+@dark-state-warning-border:  darken(spin(@state-warning-bg, -10), 5%);
+
+@dark-state-danger-text:     #a94442;
+@dark-state-danger-bg:       #f2dede;
+@dark-state-danger-border:   darken(spin(@state-danger-bg, -10), 5%);
+*/
+
+// Tooltips and popovers
+// -------------------------
+@dark-popover-bg:            @gray-darker;
+@dark-popover-arrow-color:   @gray-darker;
+@dark-popover-title-bg:      darken(@popover-bg, 3%);
+
+
+// Panels
+// -------------------------
+@panel-border-radius:        0;
+
+@dark-panel-bg:              #2b292b;
+@dark-panel-inner-border:    @dark-body-bg;
+@dark-panel-footer-bg:       @dark-panel-bg;
+
+@dark-panel-default-text:    @dark-text-color;
+@dark-panel-default-border:  @dark-panel-bg;
+@dark-panel-default-heading-bg: @dark-panel-bg;
+
+@dark-panel-primary-text:       #fff;
+@dark-panel-primary-border:     @brand-primary;
+@dark-panel-primary-heading-bg: @brand-primary;
+
+@dark-panel-success-text:       @state-success-text;
+@dark-panel-success-border:     multiply(@state-success-border, @dark-panel-bg);
+@dark-panel-success-heading-bg: multiply(@state-success-bg, @dark-panel-bg);
+
+@dark-panel-info-text:          @panel-info-text;
+@dark-panel-info-border:        multiply(@state-info-border, @dark-panel-bg);
+@dark-panel-info-heading-bg:    multiply(@panel-info-heading-bg, @dark-panel-bg);
+
+@dark-panel-warning-text:       @state-warning-text;
+@dark-panel-warning-border:     multiply(@state-warning-border, @dark-panel-bg);
+@dark-panel-warning-heading-bg: multiply(@state-warning-bg, @dark-panel-bg);
+
+@dark-panel-danger-text:        @state-danger-text;
+@dark-panel-danger-border:      multiply(@state-danger-border, @dark-panel-bg);
+@dark-panel-danger-heading-bg:  multiply(@state-danger-bg, @dark-panel-bg);
+
+
+// Wells
+// -------------------------
+@dark-well-bg:               #202020;
+
+
+// Breadcrumbs
+// -------------------------
+@breadcrumb-bg:              @gray-lighter;
