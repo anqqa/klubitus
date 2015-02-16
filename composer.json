@@ -1,22 +1,33 @@
 {
-	"name": "anqqa/klubitus",
-	"description": "klubitus.org",
-	"keywords": [ "framework", "laravel", "klubitus" ],
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*",
-		"way/generators": "2.*",
-		"barryvdh/laravel-ide-helper": "1.*",
-		"barryvdh/laravel-debugbar": "1.*",
-		"dingo/api": "0.*"
+		"laravel/framework": "5.0.*",
+		"illuminate/html": "~5.0",
+		"dingo/api": "dev-develop"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~4.0",
+		"phpspec/phpspec": "~2.1",
+		"barryvdh/laravel-debugbar": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/models",
-			"app/exceptions",
-			"app/libraries"
+			"database",
+
+			"app/Http/Controllers",
+			"app/Models"
+		],
+		"psr-4": {
+			"klubitus\\": "app/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/TestCase.php"
 		]
 	},
 	"scripts": {
@@ -26,16 +37,14 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
-			"php artisan ide-helper:generate",
-			"php artisan debugbar:publish",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
+			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "stable"
+	}
 }

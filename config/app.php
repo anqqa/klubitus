@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 		//'Dingo\Api\Provider\ApiServiceProvider',
 
 		/*
@@ -197,7 +198,9 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		//'API'       => 'Dingo\Api\Facade\API',
-		'Debugbar'  => 'Barryvdh\Debugbar\Facade'
+		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'Html'      => 'Illuminate\Html\HtmlFacade',
 	],
 
 ];
