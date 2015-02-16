@@ -1,4 +1,5 @@
-<?php
+<?php namespace klubitus\Http\Controllers;
+
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 

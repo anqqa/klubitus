@@ -1,4 +1,5 @@
-<?php
+<?php namespace klubitus\Http\Controllers;
+
 use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace klubitus\Http\Controllers;
 
 use Carbon\Carbon;
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace klubitus\Http\Controllers;
 
 class HomeController extends BaseController {
 	protected $id = 'home';

@@ -1,4 +1,5 @@
-<?php
+<?php namespace klubitus\Http\Controllers;
+
 class ShoutController extends BaseController {
 
 	/**
