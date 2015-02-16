@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: klubitus
+        psr4_prefix: klubitus
+        src_path: app
