@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Gvb\Whoops\ServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		//'Dingo\Api\Provider\ApiServiceProvider',
 

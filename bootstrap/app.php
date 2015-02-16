@@ -38,7 +38,7 @@ $app->singleton(
 
 $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
-	'klubitus\Exceptions\Handler'
+	'Gvb\Whoops\ExceptionHandler'
 );
 
 /*

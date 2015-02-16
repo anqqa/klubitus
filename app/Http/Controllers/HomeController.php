@@ -3,6 +3,16 @@
 class HomeController extends BaseController {
 	protected $id = 'home';
 
+	protected $newsfeedController;
+	protected $shoutController;
+
+
+	public function __construct(NewsfeedController $newsfeedController,
+	                            ShoutController $shoutController) {
+		$this->newsfeedController = $newsfeedController;
+		$this->shoutController = $shoutController;
+	}
+
 
 	/**
 	 * Index.
@@ -10,10 +20,10 @@ class HomeController extends BaseController {
 	 * @return  \Illuminate\View\View
 	 */
 	public function getIndex() {
-		$this->layout->content = View::make(
-			'layouts._three_columns', array(
+		$this->layout->content = view(
+			'layouts._three_columns', [
 				'right' => $this->viewShouts(10) . $this->viewNewsfeed(50),
-			)
+			]
 		);
 	}
 
@@ -30,7 +40,7 @@ class HomeController extends BaseController {
 	 * @return  string
 	 */
 	protected function viewNewsfeed($limit = 50) {
-		return App::make('NewsfeedController')->viewNewsfeed($limit);
+		return $this->newsfeedController->viewNewsfeed($limit);
 	}
 
 
@@ -41,7 +51,7 @@ class HomeController extends BaseController {
 	 * @return  string
 	 */
 	protected function viewShouts($limit = 10) {
-		return App::make('ShoutController')->viewShouts($limit);
+		return $this->shoutController->viewShouts($limit);
 	}
 
 }

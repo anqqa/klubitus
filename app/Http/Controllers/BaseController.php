@@ -23,7 +23,7 @@ class BaseController extends Controller {
 	 */
 	protected function setupLayout() {
 		if (!is_null($this->layout)) {
-			$this->layout = View::make($this->layout, array(
+			$this->layout = view($this->layout, array(
 				'language' => Config::get('app.language', 'en'),
 				'id'       => $this->id,
 				'class'    => '',
@@ -45,7 +45,7 @@ class BaseController extends Controller {
 //		$this->layout->class    = '';
 
 //		$this->layout->title    = $this->title;
-		$this->layout->content  = View::make($path, $data);
+		$this->layout->content  = view($path, $data);
 	}
 
 }
