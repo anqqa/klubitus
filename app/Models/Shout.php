@@ -1,6 +1,6 @@
-<?php namespace klubitus;
+<?php namespace klubitus\Models;
 
-class Shout extends Entity {
+class Shout extends BaseModel {
 	protected $table   = 'shouts';
 	protected $visible = [ 'id', 'author_id', 'created', 'shout', 'user' ];
 
