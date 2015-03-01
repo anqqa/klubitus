@@ -138,7 +138,7 @@ return [
 
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Gvb\Whoops\ServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
 		//'Dingo\Api\Provider\ApiServiceProvider',
 
 		/*
@@ -164,7 +164,6 @@ return [
 	*/
 
 	'aliases' => [
-
 		'App'       => 'Illuminate\Support\Facades\App',
 		'Artisan'   => 'Illuminate\Support\Facades\Artisan',
 		'Auth'      => 'Illuminate\Support\Facades\Auth',
@@ -198,10 +197,12 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		//'API'       => 'Dingo\Api\Facade\API',
+		'API'       => 'Dingo\Api\Facade\API',
 		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
-		'Form'      => 'Illuminate\Html\FormFacade',
-		'Html'      => 'Illuminate\Html\HtmlFacade',
+		'Form'      => 'Collective\Html\FormFacade',
+		'Html'      => 'Collective\Html\HtmlFacade',
+
+		'Text'      => 'klubitus\Helpers\Text'
 	],
 
 ];

@@ -1,5 +1,10 @@
 <?php
 
+use Collective\Html\FormBuilder as Form;
+use Collective\Html\HtmlBuilder as Html;
+use klubitus\Models\User;
+
+
 /**
  * Form input.
  */
@@ -84,7 +89,7 @@ Form::macro('field', function($options) {
 /**
  * User avatar with link to profile.
  */
-HTML::macro('avatar', function($avatar = true, $username = null, $class = null, $lazy = true) {
+Html::macro('avatar', function($avatar = true, $username = null, $class = null, $lazy = true) {
 	static $viewer;
 
 	// Load current user
@@ -157,7 +162,7 @@ HTML::macro('avatar', function($avatar = true, $username = null, $class = null, 
 /**
  * Username with link to profile.
  */
-HTML::macro('user', function($user = null, $username = null, $url = null) {
+Html::macro('user', function($user = null, $username = null, $url = null) {
 	static $viewer;
 
 	// Load current user

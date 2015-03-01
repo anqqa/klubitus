@@ -41,7 +41,7 @@
 @section('login')
 
 <div class="ui basic segment">
-	{{ Form::open([ 'route' => 'session.store', 'class' => 'hide mobile' ]) }}
+	{!! Form::open([ 'route' => 'session.store', 'class' => 'hide mobile' ]) !!}
 
 	<div class="ui fluid form">
 
@@ -65,11 +65,11 @@
 			</div>
 		</div>
 
-		{{ Form::button('<i class="sign in icon"></i> Login', [ 'type' => 'submit', 'class' => 'tiny ui fluid primary submit compact labeled icon button', 'title' => 'Remember to sign out if on a public computer!' ]) }}
+		{!! Form::button('<i class="sign in icon"></i> Login', [ 'type' => 'submit', 'class' => 'tiny ui fluid primary submit compact labeled icon button', 'title' => 'Remember to sign out if on a public computer!' ]) !!}
 
 	</div>
 
-	{{ Form::close() }}
+	{!! Form::close() !!}
 
 	<a class="tiny ui fluid primary compact labeled icon button mobile only" href="{{ URL::route('session.create') }}" title="Login">
 		<i class="sign in icon"></i>
@@ -98,7 +98,7 @@
 
 	@yield('menu')
 
-	@if (!$viewer)
+	@if (!Auth::user())
 		@yield('login')
 	@else
 		@include('layouts._profile')

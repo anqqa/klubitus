@@ -1,4 +1,7 @@
-<?php
+<?php namespace klubitus\Helpers;
+
+use Illuminate\Support\Str;
+
 
 class Text {
 

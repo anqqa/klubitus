@@ -22,7 +22,7 @@ class HomeController extends BaseController {
 	public function getIndex() {
 		$this->layout->content = view(
 			'layouts._three_columns', [
-				'right' => $this->viewShouts(10) . $this->viewNewsfeed(50),
+				'right' => $this->viewShouts(10)// . $this->viewNewsfeed(50),
 			]
 		);
 	}

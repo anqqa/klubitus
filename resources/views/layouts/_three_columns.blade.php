@@ -3,19 +3,19 @@
 
 		<div class="column">
 
-			{{ $left or '' }}
+			{!! $left or '' !!}
 
 		</div>
 
 		<div class="column">
 
-			{{ $center or '' }}
+			{!! $center or '' !!}
 
 		</div>
 
 		<div class="column">
 
-			{{ $right or '' }}
+			{!! $right or '' !!}
 
 		</div>
 
