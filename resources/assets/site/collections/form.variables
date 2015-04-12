@@ -7,5 +7,7 @@
 --------------------*/
 
 /* Placeholder */
+/*
 @inputPlaceholderColor: lighten(@inputColor, 30);
 @inputPlaceholderFocusColor: lighten(@inputColor, 35);
+*/

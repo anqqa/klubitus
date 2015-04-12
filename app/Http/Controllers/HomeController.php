@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 	public function getIndex() {
 		$this->layout->content = view(
 			'layouts._three_columns', [
-				'right' => $this->viewShouts(10)// . $this->viewNewsfeed(50),
+					'left' => $this->viewLogin(),
+					'right' => $this->viewShouts(10)// . $this->viewNewsfeed(50),
 			]
 		);
 	}
@@ -30,6 +31,11 @@ class HomeController extends BaseController {
 
 	protected function viewBirthdays() {
 
+	}
+
+
+	protected function viewLogin() {
+		return view('home.login');
 	}
 
 

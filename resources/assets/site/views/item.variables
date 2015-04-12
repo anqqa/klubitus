@@ -7,19 +7,19 @@
 --------------------*/
 
 /* Header */
-@headerColor: @lightTextColor;
+//@headerColor: @lightTextColor;
 
 /* Metadata */
-@metaFontSize: 0.8em;
-@metaLineHeight: 1.25em;
-@metaSpacing: 0.3em;
-@metaColor: @darkTextColor;
+//@metaFontSize: 0.8em;
+//@metaLineHeight: 1.25em;
+//@metaSpacing: 0.3em;
+//@metaColor: @darkTextColor;
 
 /* Actions */
-@favoriteColor: @orange;
-@favoriteActiveColor: @orange;
-@likeColor: @red;
-@likeActiveColor: @red;
+//@favoriteColor: @orange;
+//@favoriteActiveColor: @orange;
+//@likeColor: @red;
+//@likeActiveColor: @red;
 
 /* Additional Content */
-@extraColor: @darkTextColor;
+//@extraColor: @darkTextColor;

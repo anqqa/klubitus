@@ -5,15 +5,17 @@
 /*-------------------
        Element
 --------------------*/
-
+/*
 @background: none;
 @color: @textColor;
 @borderColor: rgba(127, 127, 127, 0.15);
-
+*/
 
 /*--------------
      Parts
 ---------------*/
 
 /* Table Header */
+/*
 @headerBackground: @mainmenuBackground;
+*/

@@ -61,20 +61,29 @@
      Body
 ---------------*/
 
-#body {
-  min-height: 100%;
-  position: relative;
+body {
+  margin-top: 50px;
 }
+
+//#body {
+//  position: relative;
+//}
 
 
 /*--------------
     Main menu
 ---------------*/
 
+/*
 #mainmenu {
   float: left;
   padding-top: 2em;
   width: @mainmenuWidth;
+
+  .logo img {
+    background: black;
+    padding: 3px 7px 7px;
+  }
 
   @media only screen and (max-width: (@largestMobileScreen)) {
     width: @mainMobileWidth;
@@ -120,12 +129,13 @@
   width: inherit;
   z-index: -1;
 }
-
+*/
 
 /*--------------
      Content
 ---------------*/
 
+/*
 #content {
   margin-left: @mainmenuWidth;
   overflow: hidden;
@@ -134,3 +144,4 @@
     margin-left: @mainMobileWidth;
   }
 }
+*/

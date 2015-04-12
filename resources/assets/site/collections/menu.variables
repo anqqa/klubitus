@@ -5,7 +5,7 @@
 /*--------------
      States
 ---------------*/
-
+/*
 @hoverBackground: @subtleTransparentWhite;
 @hoverColor: @lightTextColor;
 
@@ -16,3 +16,4 @@
 @activeColor: @lightTextColor;
 
 @activeHoverBackground: @hoverBackground;
+*/

@@ -49,17 +49,19 @@
         Page
 --------------------*/
 
+/*
 @pageBackground      : @lightBlack;
 @textColor           : @lightGrey;
-
+*/
 
 /*-------------------
        Links
 --------------------*/
 
+/*
 @linkColor           : @blue;
 @linkHoverColor      : lighten(@linkColor, 5);
-
+*/
 
 /*-------------------
         Grid
@@ -72,6 +74,7 @@
      Neutral Text
 --------------------*/
 
+/*
 @darkTextColor               : #838383;
 @lightTextColor              : #E3E3E3;
 
@@ -80,8 +83,9 @@
 @pressedTextColor            : @lightTextColor;
 @selectedTextColor           : @lightTextColor;
 @disabledTextColor           : fadeout(@textColor, 80);
+*/
 
-@headerColor                 : @lightTextColor;
+//@headerColor                 : @lightTextColor;
 /*
 @invertedTextColor           : rgba(255, 255, 255, 1);
 @invertedLightTextColor      : rgba(255, 255, 255, 0.8);
@@ -97,9 +101,9 @@
       Borders
 --------------------*/
 
-@borderColor                   : @black; //rgba(127, 127, 127, 0.1);
-@solidBorderColor              : @borderColor;
-@solidSelectedBorderColor      : @borderColor;
+//@borderColor                   : @black; //rgba(127, 127, 127, 0.1);
+//@solidBorderColor              : @borderColor;
+//@solidSelectedBorderColor      : @borderColor;
 
 
 
@@ -107,6 +111,6 @@
         klubitus
 --------------------*/
 
-@mainmenuBackground: @black; //rgba(127, 127, 127, 0.06);
-@mainmenuWidth:      140px + 2 * @emSize;
-@mainMobileWidth:    2.5 * @emSize + 2 * @emSize;
+//@mainmenuBackground: @black; //rgba(127, 127, 127, 0.06);
+//@mainmenuWidth:      140px + 2 * @emSize;
+//@mainMobileWidth:    2.5 * @emSize + 2 * @emSize;

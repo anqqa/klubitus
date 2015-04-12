@@ -1,13 +1,5 @@
-<aside class="panel panel-default">
-	<header class="panel-heading">
+<section>
+	<h3 class="ui dividing header">Login</h3>
 
-		<h3 class="panel-title">Login</h3>
-
-	</header>
-
-	<div class="panel-body">
-
-		@include('home._login', [ 'form' => $form ])
-
-	</div>
-</aside>
+	@include('home._login', [ 'form' => null /*$form*/ ])
+</section>
