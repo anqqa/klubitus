@@ -1,7 +1,0 @@
-{
-  "name": "klubitus",
-  "dependencies": {
-    "bootstrap": "~3.2.*",
-    "semantic-ui": "~1.*"
-  }
-}
